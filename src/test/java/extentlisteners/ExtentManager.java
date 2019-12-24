@@ -26,7 +26,7 @@ public class ExtentManager {
 	        extent.setSystemInfo("Automation Tester", "Bharti Rani");
 	        extent.setSystemInfo("Organization", "Athenalogics");
 	        extent.setSystemInfo("Build no", "Survey-1");
-	        
+	       
 	        
 	        return extent;
 	    }
