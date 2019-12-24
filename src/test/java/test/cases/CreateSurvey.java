@@ -1,6 +1,6 @@
 package test.cases;
 
-public class LoginTest {
+public class CreateSurvey {
 	
 	public void surveylogin() {
 		
