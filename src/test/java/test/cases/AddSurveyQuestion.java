@@ -1,5 +1,8 @@
 package test.cases;
 
-public class AddSurveyQuestion extends CreateSurvey {
+public class AddSurveyQuestion extends CreateNewSurvey {
+	
+	
+	
 	
 }

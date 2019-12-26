@@ -9,13 +9,13 @@ import org.testng.annotations.Test;
 import com.survey.pages.SalesforceHomePage;
 import com.survey.pages.SurveyListingPage;
 
-public class CreateSurvey extends survey.base.TestBase{
+public class CreateNewSurvey extends survey.base.TestBase{
 	
 	
 	@Test
 	public void verifycreatenewsurvey() throws InterruptedException {
 		SalesforceHomePage homepage =	PageFactory.initElements(driver, SalesforceHomePage.class);
-		homepage.survey();
+		homepage.SurveyTab(driver).click();
 		
 		
 		SurveyListingPage surveylisting = PageFactory.initElements(driver, SurveyListingPage.class);

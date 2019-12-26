@@ -1,16 +1,18 @@
 package com.survey.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class SalesforceHomePage {
 	
-	@FindBy(how=How.CSS,using = "#\\30 1r4T000000H7hD_Tab > a") 
-	WebElement surveytab;
+	private static WebElement element = null; 
 	
-	public void survey() {
-		surveytab.click();
+	public static WebElement SurveyTab(WebDriver driver) {
+		// TODO Auto-generated method stub
+          element = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]/li[3]/a[1]"));
+          return element;      
 	}
-
 }

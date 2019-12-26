@@ -13,7 +13,7 @@ public class SurveyListingPage {
 	
 	public static WebElement CreateNewsurveybutton(WebDriver driver) {
 		// TODO Auto-generated method stub
-          element = driver.findElement(By.xpath("//*[@id=\"bodyTable\"]/tbody/tr/td/div/div[4]/div/div/div[1]/div/div[3]/button"));
+          element = driver.findElement(By.xpath("//div[@class='slds-has-divider--bottom slds-p-around--small slds-theme--shade']//button[@class='slds-button slds-button--brand']"));
           return element;      
 	}
 	
@@ -31,12 +31,12 @@ public class SurveyListingPage {
 	
 	public static WebElement CreateSurveybutton(WebDriver driver) {
 		// TODO Auto-generated method stub
-          element = driver.findElement(By.xpath("//*[@id=\"modalCreateNewSF\"]/section/div/footer/button[2]"));
+          element = driver.findElement(By.xpath("//button[contains(text(),'Create Survey')]"));
           return element;
 	}
 	public static WebElement CreateSurveyError(WebDriver driver) {
 		// TODO Auto-generated method stub
-          element = driver.findElement(By.xpath("//*[@id=\"modalCreateNewSF\"]/section/div/div/div/div[1]/div[2]"));
+          element = driver.findElement(By.xpath("//div[contains(@class,'sf-text-red')]"));
           return element;
 	}
 	public static WebElement CheckSurveyName(WebDriver driver) {
