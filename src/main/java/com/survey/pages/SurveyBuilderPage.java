@@ -2,6 +2,7 @@ package com.survey.pages;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -11,18 +12,24 @@ import org.openqa.selenium.support.ui.Select;
 
 public class SurveyBuilderPage {
 	private static WebElement element = null; 
-	private static Select selectType;
+	//private static Select selectType;
 
 	public static WebElement enterQuestion(WebDriver driver) {
 		element = driver.findElement(By.id("questionName"));
 		return element;
 	}
 	
-	public static Select chooseQuestionType (WebDriver driver) {
-		selectType = new Select(driver.findElement(By.xpath("//*[@id=\"buildQesWrapper\"]/li[2]/div/div/div/div[2]/div/div/div[1]/div/div[3]/div/button")));
-		return selectType;
+	public static List<WebElement> chooseQuestionType (WebDriver driver) {
+		List<WebElement> element = new ArrayList<WebElement>();
+		element.add(driver.findElement(By.xpath("//span[@class='slds-p-left_xx-small sf-view-inline sf-min-w-150 sf-text-left']")));
+		element.add(driver.findElement(By.xpath("//span[contains(text(),'Short Answer')]")));
+		return element;
 	}
-	
+	/*public static WebElement selectQuestionType (WebDriver driver) {
+		
+		return element;
+	}
+	*/
 	public static List<WebElement> addOptionAsnwersChoice(WebDriver driver) {
 	List<WebElement> element = driver.findElements(By.xpath("//input[@class='slds-input' and @placeholder='Option']"));
 		return element;
