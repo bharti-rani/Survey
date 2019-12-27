@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [AthenaSurvey]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="extentlisteners.ExtentListeners"/>
+  </listeners>
+  <test thread-count="5" name="LoginTest(failed)">
+    <classes>
+      <class name="test.cases.LoginSurvey">
+        <methods>
+          <include name="loginTest"/>
+        </methods>
+      </class> <!-- test.cases.LoginSurvey -->
+    </classes>
+  </test> <!-- LoginTest(failed) -->
+</suite> <!-- Failed suite [AthenaSurvey] -->

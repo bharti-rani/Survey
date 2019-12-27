@@ -18,18 +18,19 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 		
 		CreateNewSurvey survey = new CreateNewSurvey();
 		survey.verifycreatenewsurvey();
-		
-		SurveyBuilderPage builder = PageFactory.initElements(driver, SurveyBuilderPage.class);
-		builder.clickDoneButtonOfQuestion(driver).click();
 		Thread.sleep(1000);
-		Assert.assertTrue(builder.getQuestionError(driver).getText().contains("Please Enter Question."));
-		builder.enterQuestion(driver).sendKeys(config.getProperty("QuestionText"));
-		builder.clickDoneButtonOfQuestion(driver).click();
+		SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
 		Thread.sleep(1000);
-		Assert.assertTrue(builder.getAnswerChoiceError(driver).getText().contains("Please Enter atleast 2 options."));
-		for(WebElement choice : builder.addOptionAsnwersChoice(driver)) {
-		
+		Assert.assertTrue(SurveyBuilderPage.getQuestionError(driver).getText().contains("Please Enter Question."));
+		SurveyBuilderPage.enterQuestion(driver).sendKeys(config.getProperty("QuestionText"));
+		SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
+		Thread.sleep(1000);
+		Assert.assertTrue(SurveyBuilderPage.getAnswerChoiceError(driver).getText().contains("Please Enter atleast 2 options."));
+		for(WebElement choice : SurveyBuilderPage.addOptionAsnwersChoice(driver)) {
+		choice.sendKeys(config.getProperty("answerchoice1"));
 		}
+		
+		
 		
 		
 	}
