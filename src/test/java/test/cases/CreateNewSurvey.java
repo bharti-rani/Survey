@@ -9,19 +9,18 @@ import org.testng.annotations.Test;
 import com.survey.pages.SalesforceHomePage;
 import com.survey.pages.SurveyListingPage;
 
-public class CreateNewSurvey extends survey.base.TestBase{
+public class CreateNewSurvey extends survey.base.TestBase {
 	
 	
 	@Test
 	public void verifycreatenewsurvey() throws InterruptedException {
-		SalesforceHomePage homepage =	PageFactory.initElements(driver, SalesforceHomePage.class);
+		SalesforceHomePage homepage =	PageFactory.initElements(driver, SalesforceHomePage.class); 
 		homepage.SurveyTab(driver).click();
 		
-		
-		SurveyListingPage surveylisting = PageFactory.initElements(driver, SurveyListingPage.class);
+		SurveyListingPage surveylisting = new SurveyListingPage();
 		surveylisting.CreateNewsurveybutton(driver).click();
 		surveylisting.SurveyName(driver).sendKeys("");
-		surveylisting.SurveyDescription(driver).sendKeys(config.getProperty("surveydescription"));
+		surveylisting.SurveyDescription(driver);
 		surveylisting.CreateSurveybutton(driver).click();
 		String GetCreateError1 = surveylisting.CreateSurveyError(driver).getText();
 		Assert.assertTrue(GetCreateError1.contains("Please Enter Survey Name."));

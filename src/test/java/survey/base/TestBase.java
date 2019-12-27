@@ -73,7 +73,7 @@ public class TestBase {
 			driver.get(config.getProperty("testsiteurl"));
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Integer.parseInt(config.getProperty("implict-wait")), TimeUnit.SECONDS);
-		    driver.findElement(By.id(OR.getProperty("username"))).sendKeys(config.getProperty("username"));
+			driver.findElement(By.id(OR.getProperty("username"))).sendKeys(config.getProperty("username"));
 		    driver.findElement(By.id(OR.getProperty("password"))).sendKeys(config.getProperty("pass"));
 		    driver.findElement(By.id(OR.getProperty("btn-login"))).click();
 		

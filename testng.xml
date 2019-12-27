@@ -8,7 +8,7 @@
 
   <test name="LoginTest">
   <classes>
-    <class name="survey.base.TestBase"/>
+    <class name="test.cases.LoginSurvey"/>
   </classes>
   </test> <!-- Test -->
   

@@ -1,5 +1,9 @@
 package com.survey.pages;
 
+
+
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,18 +23,8 @@ public class SurveyBuilderPage {
 		return selectType;
 	}
 	
-	public static WebElement allSetToSaveQuestions(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id=\"buildQesWrapper\"]/li[2]/div/div/div/div[2]/div/div/div[3]/div/div[2]/button[2]"));
-		return element;
-	}
-	
-	public static WebElement cancelQuestion (WebDriver driver) {
-		element = driver.findElement(By.id("//*[@id=\"buildQesWrapper\"]/li[2]/div/div/div/div[2]/div/div/div[3]/div/div[2]/button[1]"));
-		return element;
-	}
-	
-	public static WebElement addOptionAsnwers(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id=\"buildQesWrapper\"]/li[2]/div/div/div/div[2]/div/div/div[2]/div/div/div[1]/div/div[2]/button"));
+	public static List<WebElement> addOptionAsnwersChoice(WebDriver driver) {
+	List<WebElement> element = driver.findElements(By.xpath("//input[@class='slds-input' and @placeholder='Option']"));
 		return element;
 	}
 	public static WebElement addOtherCommentField(WebDriver driver) {
@@ -65,4 +59,19 @@ public class SurveyBuilderPage {
 		element = driver.findElement(By.xpath("//*[@id=\"buildQesWrapper\"]/li[1]/div/div/div/div[2]/div/div[2]/div[2]/div/div/button[1]"));
 		return element;
 	}
+	public static WebElement clickDoneButtonOfQuestion(WebDriver driver) {
+		element = driver.findElement(By.xpath("//button[contains(text(),'Done')]"));
+		return element;
+	}
+	public static WebElement getQuestionError(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(text(),'Please Enter Question.')]"));
+		return element;
+	}
+	
+	public static WebElement getAnswerChoiceError(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(text(),'Please Enter atleast 2 options.')]"));
+		return element;
+	}
+	
+	
 }
