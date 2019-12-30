@@ -18,6 +18,7 @@ public class CreateNewSurvey extends survey.base.TestBase {
 		homepage.SurveyTab(driver).click();
 		
 		SurveyListingPage surveylisting = new SurveyListingPage();
+		Thread.sleep(2000);
 		surveylisting.CreateNewsurveybutton(driver).click();
 		surveylisting.SurveyName(driver).sendKeys("");
 		surveylisting.SurveyDescription(driver);
@@ -29,7 +30,9 @@ public class CreateNewSurvey extends survey.base.TestBase {
 		Thread.sleep(3000);
 		String CheckSurveyTitle = surveylisting.CheckSurveyName(driver).getText();
 		System.out.println(CheckSurveyTitle);
-		Thread.sleep(2000);
+
+		Thread.sleep(5000);
+
 		Assert.assertTrue(CheckSurveyTitle.contains(config.getProperty("surveyname")));
 		surveylisting.BuilderTab(driver).isSelected();
 		Thread.sleep(1000);
