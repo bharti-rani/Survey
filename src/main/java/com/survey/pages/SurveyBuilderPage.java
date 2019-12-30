@@ -18,11 +18,21 @@ public class SurveyBuilderPage {
 		element = driver.findElement(By.id("questionName"));
 		return element;
 	}
-	
+	public static WebElement questionTypeButton (WebDriver driver) {
+		element = driver.findElement(By.xpath("//span[@class='slds-p-left_xx-small sf-view-inline sf-min-w-150 sf-text-left']"));
+		return element;
+	}
 	public static List<WebElement> chooseQuestionType (WebDriver driver) {
 		List<WebElement> element = new ArrayList<WebElement>();
-		element.add(driver.findElement(By.xpath("//span[@class='slds-p-left_xx-small sf-view-inline sf-min-w-150 sf-text-left']")));
+		element.add(driver.findElement(By.xpath("//div[@class='slds-has-flexi-truncate']//span[contains(text(),'Multiple Choice')]")));
+		element.add(driver.findElement(By.xpath("//span[contains(text(),'Checkboxes')]")));
+		element.add(driver.findElement(By.xpath("//span[contains(text(),'Dropdown')]")));
 		element.add(driver.findElement(By.xpath("//span[contains(text(),'Short Answer')]")));
+		element.add(driver.findElement(By.xpath("//span[contains(text(),'Paragraph')]")));
+		element.add(driver.findElement(By.xpath("//span[contains(text(),'Rating')]")));
+		element.add(driver.findElement(By.xpath("//span[contains(text(),'Slider')]")));
+		element.add(driver.findElement(By.xpath("//span[contains(text(),'Date Picker')]")));
+		element.add(driver.findElement(By.xpath("//div[@class='slds-has-flexi-truncate']//span[contains(text(),'Section')]")));
 		return element;
 	}
 	/*public static WebElement selectQuestionType (WebDriver driver) {
@@ -64,6 +74,10 @@ public class SurveyBuilderPage {
 	
 	public static WebElement editQuestions(WebDriver driver) {
 		element = driver.findElement(By.xpath("//*[@id=\"buildQesWrapper\"]/li[1]/div/div/div/div[2]/div/div[2]/div[2]/div/div/button[1]"));
+		return element;
+	}
+	public static WebElement addNewQuestions(WebDriver driver) {
+		element = driver.findElement(By.xpath("//*[@id=\"AddNewQuestionButton\"]/button"));
 		return element;
 	}
 	public static WebElement clickDoneButtonOfQuestion(WebDriver driver) {
