@@ -29,7 +29,7 @@ public class CreateNewSurvey extends survey.base.TestBase {
 		Thread.sleep(3000);
 		String CheckSurveyTitle = surveylisting.CheckSurveyName(driver).getText();
 		System.out.println(CheckSurveyTitle);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(CheckSurveyTitle.contains(config.getProperty("surveyname")));
 		surveylisting.BuilderTab(driver).isSelected();
 		Thread.sleep(1000);

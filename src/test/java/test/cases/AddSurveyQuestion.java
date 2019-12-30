@@ -21,13 +21,11 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 		survey.verifycreatenewsurvey();
 		Thread.sleep(1000);
 		SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
-<<<<<<< HEAD
+
 		Thread.sleep(1000);
 		Assert.assertTrue(SurveyBuilderPage.getQuestionError(driver).getText().contains("Please Enter Question."));
 		for(WebElement el : SurveyBuilderPage.chooseQuestionType(driver)) {
-			if(el.equals("QuestionType_1")) {
-				// more lines to come.
-			}
+			
 		}  
 		Thread.sleep(1000);
 		//System.out.println("-------"+SurveyBuilderPage.chooseQuestionType(driver));
@@ -38,17 +36,7 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 		for(WebElement choice : SurveyBuilderPage.addOptionAsnwersChoice(driver)) {
 		
 		}*/
-=======
-		Thread.sleep(1000);
-		Assert.assertTrue(SurveyBuilderPage.getQuestionError(driver).getText().contains("Please Enter Question."));
-		SurveyBuilderPage.enterQuestion(driver).sendKeys(config.getProperty("QuestionText"));
-		SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
-		Thread.sleep(1000);
-		Assert.assertTrue(SurveyBuilderPage.getAnswerChoiceError(driver).getText().contains("Please Enter atleast 2 options."));
-		for(WebElement choice : SurveyBuilderPage.addOptionAsnwersChoice(driver)) {
-		choice.sendKeys(config.getProperty("answerchoice1"));
-		}
->>>>>>> 28fdace50da5791f3561e4e7ff847ca23606b3ee
+
 		
 		
 		
