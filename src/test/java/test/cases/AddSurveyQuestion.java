@@ -15,7 +15,7 @@ import com.survey.pages.SurveyBuilderPage;
 public class AddSurveyQuestion extends survey.base.TestBase{
 	
 	@Test
-	public void addQuestion() throws InterruptedException {
+	public static void addQuestion() throws InterruptedException {
 		
 		CreateNewSurvey survey = new CreateNewSurvey();
 		survey.verifycreatenewsurvey();
