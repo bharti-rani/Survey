@@ -13,7 +13,7 @@ public class SurveyListingPage {
 	
 	public static WebElement CreateNewsurveybutton(WebDriver driver) {
 		// TODO Auto-generated method stub
-          element = driver.findElement(By.xpath("//div[contains(@class,'slds-has-divider--bottom slds-p-around--small slds-theme--shade')]//button[1]"));
+          element = driver.findElement(By.xpath("//*[@id=\"bodyTable\"]/tbody/tr/td/div/div[4]/div/div/div[1]/div/div[3]/button"));
           return element;      
 	}
 	

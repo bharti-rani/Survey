@@ -76,8 +76,8 @@ public class SurveyBuilderPage {
 		element = driver.findElement(By.xpath("//*[@id=\"buildQesWrapper\"]/li[1]/div/div/div/div[2]/div/div[2]/div[2]/div/div/button[1]"));
 		return element;
 	}
-	public static WebElement addNewQuestions(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id=\"AddNewQuestionButton\"]/button"));
+	public static WebElement addNewQuestionsButton(WebDriver driver) {
+		element = driver.findElement(By.id("AddNewQuestionButton"));
 		return element;
 	}
 	public static WebElement clickDoneButtonOfQuestion(WebDriver driver) {
@@ -93,6 +93,34 @@ public class SurveyBuilderPage {
 		element = driver.findElement(By.xpath("//div[contains(text(),'Please Enter atleast 2 options.')]"));
 		return element;
 	}
+	public static WebElement checkShortAnswerLabel(WebDriver driver) {
+		element = driver.findElement(By.xpath("//label[contains(text(),'Short Answer')]"));
+		return element;
+	}
+	public static WebElement checkShortAnswerChoice(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(@class,'slds-p-bottom_medium')]//div[contains(@class,'slds-has-flexi-truncate')]//input[contains(@class,'slds-input')]"));
+		return element;
+	}
 	
+	public static WebElement checkParagraphLebel(WebDriver driver) {
+		element = driver.findElement(By.xpath("//label[contains(text(),'Paragraph')]"));
+		return element;
+	}
+	public static WebElement checkParagraphField(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(@class,'slds-p-bottom_medium')]//textarea[contains(@class,'slds-textarea')]"));
+		return element;
+	}
 	
+	public static WebElement ratingScale(WebDriver driver) {
+		element = driver.findElement(By.id("noRating"));
+		return element;
+	}
+	public static WebElement ratingShape(WebDriver driver) {
+		element = driver.findElement(By.id("ratingShape"));
+		return element;
+	}
+	public static WebElement ratingColor(WebDriver driver) {
+		element = driver.findElement(By.id("ratingColor"));
+		return element;
+	}
 }
