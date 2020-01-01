@@ -111,12 +111,14 @@ public class SurveyBuilderPage {
 		return element;
 	}
 	
-	public static WebElement ratingScale(WebDriver driver) {
-		element = driver.findElement(By.id("noRating"));
+	public static Select ratingScale(WebDriver driver) {
+		Select element = new Select(driver.findElement(By.id("noRating")));
 		return element;
+
+		
 	}
-	public static WebElement ratingShape(WebDriver driver) {
-		element = driver.findElement(By.id("ratingShape"));
+	public static Select ratingShape(WebDriver driver) {
+		Select element = new Select(driver.findElement(By.id("ratingShape")));
 		return element;
 	}
 	public static WebElement ratingColor(WebDriver driver) {

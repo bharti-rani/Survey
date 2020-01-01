@@ -122,8 +122,17 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 				SurveyBuilderPage.enterQuestion(driver).sendKeys(config.getProperty("RatingType"));
 				
 				Thread.sleep(2000);
+				System.out.println(SurveyBuilderPage.ratingScale(driver).getFirstSelectedOption().getText());
+				Assert.assertTrue(SurveyBuilderPage.ratingScale(driver).getFirstSelectedOption().getText().equals("1"));
+				Thread.sleep(1000);
+				SurveyBuilderPage.ratingScale(driver).selectByVisibleText("5");
+				Thread.sleep(1000);
+				Assert.assertTrue(SurveyBuilderPage.ratingShape(driver).getFirstSelectedOption().getText().contains("Star"));
+				SurveyBuilderPage.ratingShape(driver).selectByVisibleText("Thumb");
 				
-			//	Assert.assertTrue(SurveyBuilderPage.checkParagraphLebel(driver).getText().contains("Rating"));
+				
+				
+				//	Assert.assertTrue(SurveyBuilderPage.checkParagraphLebel(driver).getText().contains("Rating"));
 			//	Thread.sleep(2000);
 			//	Assert.assertFalse(SurveyBuilderPage.checkParagraphLebel(driver).isEnabled());	
 			}
