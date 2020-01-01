@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 import com.survey.pages.SalesforceHomePage;
 import com.survey.pages.SurveyListingPage;
 
+
+
 public class CreateNewSurvey extends survey.base.TestBase {
 	
 	
@@ -27,11 +29,11 @@ public class CreateNewSurvey extends survey.base.TestBase {
 		Assert.assertTrue(GetCreateError1.contains("Please Enter Survey Name."));
 		surveylisting.SurveyName(driver).sendKeys(config.getProperty("surveyname"));
 		surveylisting.CreateSurveybutton(driver).click();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		String CheckSurveyTitle = surveylisting.CheckSurveyName(driver).getText();
 		System.out.println(CheckSurveyTitle);
 
-       Thread.sleep(9000);
+       Thread.sleep(4000);
 		Assert.assertTrue(CheckSurveyTitle.contains(config.getProperty("surveyname")));
 		surveylisting.BuilderTab(driver).isSelected();
 		Thread.sleep(1000);

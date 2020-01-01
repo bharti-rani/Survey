@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class SurveyBuilderPage {
+	
 	private static WebElement element = null; 
 	//private static Select selectType;
 
@@ -32,50 +34,21 @@ public class SurveyBuilderPage {
 		element.add(driver.findElement(By.xpath("//span[contains(text(),'Rating')]")));
 		element.add(driver.findElement(By.xpath("//span[contains(text(),'Slider')]")));
 		element.add(driver.findElement(By.xpath("//span[contains(text(),'Date Picker')]")));
-		element.add(driver.findElement(By.xpath("//div[@class='slds-has-flexi-truncate']//span[contains(text(),'Section')]")));
-		return element;
-	}
-	/*public static WebElement selectQuestionType (WebDriver driver) {
 		
 		return element;
 	}
-	*/
+	
+	public static JavascriptExecutor scrollDown (WebDriver driver) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		return js;
+	}
+	
 	public static List<WebElement> addOptionAsnwersChoice(WebDriver driver) {
 	List<WebElement> element = driver.findElements(By.xpath("//input[@class='slds-input' and @placeholder='Option']"));
 		return element;
 	}
-	public static WebElement addOtherCommentField(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id=\"buildQesWrapper\"]/li[2]/div/div/div/div[2]/div/div/div[2]/div/div/div[1]/div/div[4]/div/div[1]/div/div/span/label/span[1]"));
-		return element;
-	}
-	public static WebElement copyAndPasteQuestions(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id=\"AddNewQuestionButton\"]/a"));
-		return element;
-	}
 	
-	public static WebElement writeAndPasteListOfQuestions(WebDriver driver) {
-		element = driver.findElement(By.id("Copyandpastequestions"));
-		return element;
-	}
-	
-	public static WebElement addListOfQuestions(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id=\"modalCreateNewSF\"]/section/div/footer/button"));
-		return element;
-	}
-	
-	public static WebElement AddListOfQuestions(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id=\"modalCreateNewSF\"]/section/div/footer/button"));
-		return element;
-	}
-	public static WebElement nextQuestions (WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id=\"buildQesWrapper\"]/li[2]/div/div/div/div[2]/div/div/div[3]/div/div[1]/button"));
-		return element;
-	}
-	
-	public static WebElement editQuestions(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id=\"buildQesWrapper\"]/li[1]/div/div/div/div[2]/div/div[2]/div[2]/div/div/button[1]"));
-		return element;
-	}
 	public static WebElement addNewQuestionsButton(WebDriver driver) {
 		element = driver.findElement(By.id("AddNewQuestionButton"));
 		return element;
@@ -125,4 +98,22 @@ public class SurveyBuilderPage {
 		element = driver.findElement(By.id("ratingColor"));
 		return element;
 	}
+	public static WebElement startSliderlength(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[@id='optionHtmlWrapper']//span[1]"));
+		return element;
+	}
+	
+	public static WebElement endSliderlength(WebDriver driver) {
+		element = driver.findElement(By.xpath("//span[contains(@class,'slds-slider__value')][contains(text(),'100')]"));
+		return element;
+	}
+	public static WebElement checkdatePickerIsDisabled(WebDriver driver) {
+		element = driver.findElement(By.id("date-input-id"));
+		return element;
+	}
+	public static List<WebElement> checkQuestionList(WebDriver driver) {
+		List<WebElement> element = driver.findElements(By.xpath("//div[@id='allQuestionWrapper']//li"));
+		return element;
+	}
+	
 }

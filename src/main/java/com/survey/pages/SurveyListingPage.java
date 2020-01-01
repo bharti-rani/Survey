@@ -5,8 +5,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+
 
 public class SurveyListingPage {
 	private static WebElement element = null; 
@@ -53,7 +52,7 @@ public class SurveyListingPage {
 	
 	public static WebElement SaveAllButtonForBuilder(WebDriver driver) {
 		// TODO Auto-generated method stub
-          element = driver.findElement(By.id("ActionButton"));
+          element = driver.findElement(By.xpath("//button[contains(@class,'slds-button slds-button_brand slds-m-right_medium')]"));
           return element;
 	}
 	public static WebElement SaveAllSuccessMessage(WebDriver driver) {

@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.survey.pages.SalesforceHomePage;
 import com.survey.pages.SurveyBuilderPage;
+import com.survey.pages.SurveyListingPage;
 
 
 
@@ -37,9 +38,9 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 				Thread.sleep(2000);
 				SurveyBuilderPage.enterQuestion(driver).sendKeys(config.getProperty("MultipleChoiceType"));
 				SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
-				Thread.sleep(5000);
+				Thread.sleep(3000);
 				Assert.assertTrue(SurveyBuilderPage.getAnswerChoiceError(driver).getText().contains("Please Enter atleast 2 options."));
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 				for(int i=0; i<=SurveyBuilderPage.addOptionAsnwersChoice(driver).size(); i++) {
 					if(i==0) {
 						SurveyBuilderPage.addOptionAsnwersChoice(driver).get(i).sendKeys("choice1");	
@@ -57,9 +58,9 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 					Thread.sleep(2000);
 					SurveyBuilderPage.enterQuestion(driver).sendKeys(config.getProperty("CheckboxType"));
 					SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
-					Thread.sleep(5000);
-					Assert.assertTrue(SurveyBuilderPage.getAnswerChoiceError(driver).getText().contains("Please Enter atleast 2 options."));
 					Thread.sleep(2000);
+					Assert.assertTrue(SurveyBuilderPage.getAnswerChoiceError(driver).getText().contains("Please Enter atleast 2 options."));
+					Thread.sleep(1000);
 					for(int i=0; i<=SurveyBuilderPage.addOptionAsnwersChoice(driver).size(); i++) {
 						if(i==0) {
 							SurveyBuilderPage.addOptionAsnwersChoice(driver).get(i).sendKeys("checkbox1");	
@@ -78,9 +79,9 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 				Thread.sleep(2000);
 				SurveyBuilderPage.enterQuestion(driver).sendKeys(config.getProperty("DropdownType"));
 				SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
-				Thread.sleep(5000);
-				Assert.assertTrue(SurveyBuilderPage.getAnswerChoiceError(driver).getText().contains("Please Enter atleast 2 options."));
 				Thread.sleep(2000);
+				Assert.assertTrue(SurveyBuilderPage.getAnswerChoiceError(driver).getText().contains("Please Enter atleast 2 options."));
+				Thread.sleep(1000);
 				for(int i=0; i<=SurveyBuilderPage.addOptionAsnwersChoice(driver).size(); i++) {
 					if(i==0) {
 						SurveyBuilderPage.addOptionAsnwersChoice(driver).get(i).sendKeys("Dropdown1");	
@@ -129,20 +130,46 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 				Thread.sleep(1000);
 				Assert.assertTrue(SurveyBuilderPage.ratingShape(driver).getFirstSelectedOption().getText().contains("Star"));
 				SurveyBuilderPage.ratingShape(driver).selectByVisibleText("Thumb");
-				
-				
-				
-				//	Assert.assertTrue(SurveyBuilderPage.checkParagraphLebel(driver).getText().contains("Rating"));
-			//	Thread.sleep(2000);
-			//	Assert.assertFalse(SurveyBuilderPage.checkParagraphLebel(driver).isEnabled());	
+				Thread.sleep(1000);
+				Assert.assertTrue(SurveyBuilderPage.ratingColor(driver).getCssValue("color").equals("rgba(62, 62, 60, 1)"));	
 			}
+			else if(el.getText().equalsIgnoreCase("Slider")) {
+				System.out.println(">>>>inside the if"+el.getText());
+				el.click();
+				Thread.sleep(2000);
+				SurveyBuilderPage.enterQuestion(driver).sendKeys(config.getProperty("SliderType"));	
+				Thread.sleep(2000);
+				Assert.assertTrue(SurveyBuilderPage.startSliderlength(driver).getText().equals("0"));
+				Thread.sleep(1000);
+				Assert.assertTrue(SurveyBuilderPage.endSliderlength(driver).getText().equals("100"));
+				
+			}
+			else if(el.getText().equalsIgnoreCase("Date Picker")) {
+				System.out.println(">>>>inside the if"+el.getText());
+				el.click();
+				Thread.sleep(2000);
+				SurveyBuilderPage.enterQuestion(driver).sendKeys(config.getProperty("DatePickerType"));	
+				Thread.sleep(2000);
+				SurveyBuilderPage.checkdatePickerIsDisabled(driver).isDisplayed();
+				Assert.assertFalse(SurveyBuilderPage.checkdatePickerIsDisabled(driver).isEnabled());
+				break;
+				
+			}
+			 
 			 SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
 		     Thread.sleep(1000);
 			 SurveyBuilderPage.addNewQuestionsButton(driver).click();
 			 Thread.sleep(1000);
+			 SurveyBuilderPage.scrollDown(driver);
+			 
 			 SurveyBuilderPage.questionTypeButton(driver).click();
 		} 
-
+		Thread.sleep(1000);
+		SurveyListingPage.SaveAllButtonForBuilder(driver).click();
+		Thread.sleep(3000);
+		Assert.assertTrue(SurveyListingPage.SaveAllSuccessMessage(driver).getText().contains("Survey Configuration has been saved successfully."));
+		Thread.sleep(1000);
+		System.out.println(SurveyBuilderPage.checkQuestionList(driver).size());
 	}
 	
 

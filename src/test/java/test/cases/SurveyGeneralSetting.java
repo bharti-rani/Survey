@@ -1,12 +1,13 @@
 package test.cases;
 
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.PageFactory;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.survey.pages.SalesforceHomePage;
 import com.survey.pages.SurveySettingPage;
+
 
 public class SurveyGeneralSetting extends survey.base.TestBase{
 
