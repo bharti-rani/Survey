@@ -1,5 +1,9 @@
 package test.cases;
 
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -16,10 +20,9 @@ import com.survey.pages.SurveyListingPage;
 public class AddSurveyQuestion extends survey.base.TestBase{
 	
 	@Test
-	public void addQuestion() throws InterruptedException {
+	public static void addQuestion() throws InterruptedException {
 		
-		CreateNewSurvey survey = new CreateNewSurvey();
-		survey.verifycreatenewsurvey();
+		
 		Thread.sleep(1000);
 		SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
 		Thread.sleep(1000);
@@ -51,6 +54,29 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 					
 				}
 				
+				Assert.assertTrue(SurveyBuilderPage.advanceTab(driver).isDisplayed());
+				Assert.assertTrue(SurveyBuilderPage.helpTab(driver).isDisplayed());
+				Thread.sleep(1000);
+				SurveyBuilderPage.advanceTab(driver).click();
+				Thread.sleep(1000);
+				for(WebElement req : SurveyBuilderPage.requiredQuestion(driver)) {
+					if(req.getText().contains("Require an Answer to This Question")) {
+						System.out.println("qq");
+					}
+					else {
+						assertFalse(false);
+					}
+				}
+				
+				for(WebElement hid : SurveyBuilderPage.hiddenQuestion(driver)) {
+					
+					if(hid.getText().contains("Hidden Question")) {
+						System.out.println("hh");
+					}
+					else {
+						assertFalse(false);
+					}
+				}
 				
 			}else if(el.getText().equalsIgnoreCase("Checkboxes")) {
 					System.out.println(">>>>inside the if"+el.getText());
@@ -70,7 +96,8 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 						}
 						
 					}
-					
+					Assert.assertTrue(SurveyBuilderPage.advanceTab(driver).isDisplayed());
+					Assert.assertTrue(SurveyBuilderPage.helpTab(driver).isDisplayed());
 					
 				}
 			else if(el.getText().equalsIgnoreCase("Dropdown")) {
@@ -91,7 +118,8 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 					}
 					
 				}
-				
+				Assert.assertTrue(SurveyBuilderPage.advanceTab(driver).isDisplayed());
+				Assert.assertTrue(SurveyBuilderPage.helpTab(driver).isDisplayed());
 				
 			}
 			else if(el.getText().equalsIgnoreCase("Short Answer")) {
@@ -104,6 +132,9 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 				Assert.assertTrue(SurveyBuilderPage.checkShortAnswerLabel(driver).getText().contains("Short Answer"));
 				Thread.sleep(2000);
 				Assert.assertFalse(SurveyBuilderPage.checkShortAnswerChoice(driver).isEnabled());	
+				
+				Assert.assertTrue(SurveyBuilderPage.advanceTab(driver).isDisplayed());
+				Assert.assertTrue(SurveyBuilderPage.helpTab(driver).isDisplayed());
 			}
 			else if(el.getText().equalsIgnoreCase("Paragraph")) {
 				System.out.println(">>>>inside the if"+el.getText());
@@ -115,6 +146,8 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 				Assert.assertTrue(SurveyBuilderPage.checkParagraphLebel(driver).getText().contains("Paragraph"));
 				Thread.sleep(2000);
 				Assert.assertFalse(SurveyBuilderPage.checkParagraphField(driver).isEnabled());	
+				Assert.assertTrue(SurveyBuilderPage.advanceTab(driver).isDisplayed());
+				Assert.assertTrue(SurveyBuilderPage.helpTab(driver).isDisplayed());
 			}
 			else if(el.getText().equalsIgnoreCase("Rating")) {
 				System.out.println(">>>>inside the if"+el.getText());
@@ -132,6 +165,9 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 				SurveyBuilderPage.ratingShape(driver).selectByVisibleText("Thumb");
 				Thread.sleep(1000);
 				Assert.assertTrue(SurveyBuilderPage.ratingColor(driver).getCssValue("color").equals("rgba(62, 62, 60, 1)"));	
+				
+				Assert.assertTrue(SurveyBuilderPage.helpTab(driver).isDisplayed());
+			
 			}
 			else if(el.getText().equalsIgnoreCase("Slider")) {
 				System.out.println(">>>>inside the if"+el.getText());
@@ -142,7 +178,9 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 				Assert.assertTrue(SurveyBuilderPage.startSliderlength(driver).getText().equals("0"));
 				Thread.sleep(1000);
 				Assert.assertTrue(SurveyBuilderPage.endSliderlength(driver).getText().equals("100"));
-				
+				Assert.assertTrue(SurveyBuilderPage.advanceTab(driver).isDisplayed());
+				Assert.assertTrue(SurveyBuilderPage.helpTab(driver).isDisplayed());
+			
 			}
 			else if(el.getText().equalsIgnoreCase("Date Picker")) {
 				System.out.println(">>>>inside the if"+el.getText());
@@ -152,6 +190,8 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 				Thread.sleep(2000);
 				SurveyBuilderPage.checkdatePickerIsDisabled(driver).isDisplayed();
 				Assert.assertFalse(SurveyBuilderPage.checkdatePickerIsDisabled(driver).isEnabled());
+				Assert.assertTrue(SurveyBuilderPage.advanceTab(driver).isDisplayed());
+				Assert.assertTrue(SurveyBuilderPage.helpTab(driver).isDisplayed());
 				break;
 				
 			}
@@ -168,8 +208,9 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 		SurveyListingPage.SaveAllButtonForBuilder(driver).click();
 		Thread.sleep(3000);
 		Assert.assertTrue(SurveyListingPage.SaveAllSuccessMessage(driver).getText().contains("Survey Configuration has been saved successfully."));
-		Thread.sleep(1000);
-		System.out.println(SurveyBuilderPage.checkQuestionList(driver).size());
+		
+		
+		
 	}
 	
 

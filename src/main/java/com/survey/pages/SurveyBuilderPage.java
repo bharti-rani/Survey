@@ -111,8 +111,48 @@ public class SurveyBuilderPage {
 		element = driver.findElement(By.id("date-input-id"));
 		return element;
 	}
-	public static List<WebElement> checkQuestionList(WebDriver driver) {
-		List<WebElement> element = driver.findElements(By.xpath("//div[@id='allQuestionWrapper']//li"));
+	
+	public static WebElement advanceTab(WebDriver driver) {
+		element = driver.findElement(By.xpath("//a[contains(text(),'Advanced')]"));
+		return element;
+	}
+	
+	public static WebElement helpTab(WebDriver driver) {
+		element = driver.findElement(By.xpath("//a[contains(text(),'Help Tip')]"));
+		return element;
+	}
+	public static List<WebElement> requiredQuestion(WebDriver driver) {
+		List<WebElement> element = driver.findElements(By.xpath("//span[@random-id='isReq']//label[@for='isRequired']//span"));
+		return element;
+	}
+	
+	public static List<WebElement> placeholderQuestion(WebDriver driver) {
+		List<WebElement> element = driver.findElements(By.xpath("//span[@random-id='plc']//label[@for='hasPlaceholder']//span"));
+		return element;
+	}
+	
+	public static List<WebElement> maxLengthQuestion(WebDriver driver) {
+		List<WebElement> element = driver.findElements(By.xpath("//span[@random-id='max']//label[@for='hasMaxLength']//span"));
+		return element;
+	}
+	public static List<WebElement> defaultValueQuestion(WebDriver driver) {
+		List<WebElement> element = driver.findElements(By.xpath("//span[@random-id='val']//label[@for='hasDefaultValue']//span"));
+		return element;
+	}
+	public static List<WebElement> hiddenQuestion(WebDriver driver) {
+		List<WebElement> element = driver.findElements(By.xpath("//span[@random-id='val']//label[@for='hasQuesHidden']//span"));
+		return element;
+	}
+	public static WebElement requiredMessageTextField(WebDriver driver) {
+		element = driver.findElement(By.id("requiredMessage"));
+		return element;
+	}
+	public static WebElement requiredMessageTextFieldErrorMessage(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(text(),'Please Enter Required Error Message')]"));
+		return element;
+	}
+	public static WebElement requiredMessageIcon(WebDriver driver) {
+		element = driver.findElement(By.xpath("//i[@class='fa fa-asterisk sf-text-red slds-m-right_xx-small']"));
 		return element;
 	}
 	
