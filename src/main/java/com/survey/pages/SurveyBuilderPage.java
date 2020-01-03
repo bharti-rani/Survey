@@ -14,8 +14,13 @@ import org.openqa.selenium.support.ui.Select;
 public class SurveyBuilderPage {
 	
 	private static WebElement element = null; 
-	//private static Select selectType;
+	
 
+	public static WebElement builderTab(WebDriver driver) {
+		element = driver.findElement(By.xpath("//li[contains(@class,'slds-col--bump-right')]"));
+		return element;
+	}
+	
 	public static WebElement enterQuestion(WebDriver driver) {
 		element = driver.findElement(By.id("questionName"));
 		return element;
@@ -153,6 +158,32 @@ public class SurveyBuilderPage {
 	}
 	public static WebElement requiredMessageIcon(WebDriver driver) {
 		element = driver.findElement(By.xpath("//i[@class='fa fa-asterisk sf-text-red slds-m-right_xx-small']"));
+		return element;
+	}
+	
+	public static WebElement editQuestion(WebDriver driver) {
+		element = driver.findElement(By.xpath("//button[@class='slds-button slds-button_neutral' and @data-editquestion-button='data-editQuestion-button']"));
+		return element;
+	}
+	public static WebElement defaultMessageTextFieldErrorMessage(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(text(),'Please Enter Default Value.')]"));
+		return element;
+	}
+	public static WebElement defaultMessageTextField(WebDriver driver) {
+		element = driver.findElement(By.id("defaultValue"));
+		return element;
+	}
+	public static WebElement shortAnswerInputBox(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(@class,'slds-p-around--small')]//input[contains(@class,'slds-input')]"));
+		return element;
+	}
+	
+	public static WebElement maxLengthTextFieldErrorMessage(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(text(),'Please Enter Max Length.')]"));
+		return element;
+	}
+	public static WebElement maxLengthTextField(WebDriver driver) {
+		element = driver.findElement(By.id("maxLength"));
 		return element;
 	}
 	

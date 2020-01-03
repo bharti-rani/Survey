@@ -30,15 +30,27 @@ public class SurveyPreviewPage {
 	}
    public static WebElement requiredIcon(WebDriver driver) {
 		
-       element = driver.findElement(By.xpath("//span[contains(@class,'sf-text-size-21 sf-text-red')]"));
+       element = driver.findElement(By.xpath("//i[contains(@class,'fa fa-sm fa-asterisk sf-text-red')]"));
        return element;      
 	}
    
    public static WebElement submitButton(WebDriver driver) {
 		
-       element = driver.findElement(By.xpath("//button[@data-submit-response='data-submit-response']"));
+       element = driver.findElement(By.xpath("//div[@id='questionsInPreview']//button[1]"));
        return element;      
 	}
+   public static WebElement checkRequiredErrorMessage(WebDriver driver) {
+		
+       element = driver.findElement(By.xpath("//*[@id=\"questionsWrapper\"]/div/div/div[2]/div[2]/div[2]"));
+       return element;      
+	}
+   
+   public static WebElement shortAnswerInputBox(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(@class,'slds-p-bottom_xx-large')]//input[@class='slds-input']"));
+		return element;
+	}
+   
+ 
  
  
 }
