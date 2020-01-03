@@ -59,6 +59,5 @@ public class ObjectSyncMapping extends survey.base.TestBase {
 			SurveySyncMapping.editMapFieldDone(driver).click();
 		}
 		Thread.sleep(1000);
-		
 	}
 }
