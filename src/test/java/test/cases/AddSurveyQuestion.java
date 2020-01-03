@@ -21,7 +21,7 @@ public class AddSurveyQuestion extends survey.base.TestBase{
 	
 	@Test
 	public static void addQuestion() throws InterruptedException {
-		
+
 		
 		Thread.sleep(1000);
 		SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
