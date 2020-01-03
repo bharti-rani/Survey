@@ -5,15 +5,14 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+
 
 public class SurveyListingPage {
 	private static WebElement element = null; 
 	
 	public static WebElement CreateNewsurveybutton(WebDriver driver) {
 		// TODO Auto-generated method stub
-          element = driver.findElement(By.xpath("//div[@class='slds-has-divider--bottom slds-p-around--small slds-theme--shade']//button[@class='slds-button slds-button--brand']"));
+          element = driver.findElement(By.xpath("//*[@id=\"bodyTable\"]/tbody/tr/td/div/div[4]/div/div/div[1]/div/div[3]/button"));
           return element;      
 	}
 	
@@ -53,7 +52,7 @@ public class SurveyListingPage {
 	
 	public static WebElement SaveAllButtonForBuilder(WebDriver driver) {
 		// TODO Auto-generated method stub
-          element = driver.findElement(By.id("ActionButton"));
+          element = driver.findElement(By.xpath("//button[contains(@class,'slds-button slds-button_brand slds-m-right_medium')]"));
           return element;
 	}
 	public static WebElement SaveAllSuccessMessage(WebDriver driver) {

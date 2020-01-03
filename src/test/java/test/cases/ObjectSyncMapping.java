@@ -1,5 +1,6 @@
 package test.cases;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -28,6 +29,7 @@ public class ObjectSyncMapping extends survey.base.TestBase {
 		SurveySyncMapping.labelForObjectName(driver).sendKeys(config.getProperty("surveyname"));
 		SurveySyncMapping.apiNameForObjectLabel(driver).click();
 		SurveySyncMapping.apiNameForObjectLabel(driver).sendKeys(config.getProperty("ObjectDescription"));
+		SurveySyncMapping.createObject(driver).click();
 		
 	}
 	public static void selectObject() throws InterruptedException{
