@@ -1,6 +1,7 @@
 package test.cases;
 
 import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -48,7 +49,7 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase{
 					SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();	
 					Assert.assertTrue(SurveyBuilderPage.requiredMessageIcon(driver).isDisplayed());
 					SurveyListingPage.SaveAllButtonForBuilder(driver).click();
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 					SurveyPreviewPage.previewTab(driver).click();
 					Thread.sleep(1000);
 					SurveyPreviewPage.startSurveyButton(driver).click();
@@ -89,7 +90,8 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase{
 						Thread.sleep(1000);
 						SurveyPreviewPage.startSurveyButton(driver).click();
 						Thread.sleep(1000);
-						Assert.assertTrue(SurveyPreviewPage.shortAnswerInputBox(driver).equals(config.getProperty("DefaultMessage")));
+						System.out.println(SurveyPreviewPage.shortAnswerInputBox(driver).getText());
+						Assert.assertTrue(SurveyPreviewPage.shortAnswerInputBox(driver).getAttribute("value").equalsIgnoreCase(config.getProperty("DefaultMessage")));
 						Thread.sleep(1000);
 						SurveyPreviewPage.submitButton(driver).click();
 						Thread.sleep(2000);
@@ -116,7 +118,8 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase{
 						Thread.sleep(1000);
 						Assert.assertTrue(SurveyBuilderPage.maxLengthTextFieldErrorMessage(driver).getText().contains("Please Enter Max Length."));
 						SurveyBuilderPage.maxLengthTextField(driver).clear();
-						SurveyBuilderPage.maxLengthTextField(driver).sendKeys(config.getProperty("MaxLength"));		
+						 SurveyBuilderPage.maxLengthTextField(driver).sendKeys(config.getProperty("MaxLength"));	
+						
 						SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
 						Thread.sleep(1000);
 						SurveyListingPage.SaveAllButtonForBuilder(driver).click();
@@ -126,7 +129,59 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase{
 						SurveyPreviewPage.startSurveyButton(driver).click();
 						Thread.sleep(1000);
 						SurveyPreviewPage.shortAnswerInputBox(driver).clear();
+						SurveyPreviewPage.shortAnswerInputBox(driver).sendKeys(config.getProperty("CheckMaxLength"));
+						String typevalue = SurveyPreviewPage.shortAnswerInputBox(driver).getAttribute("value");
+						int getlength = typevalue.length();
+						if(getlength == Integer.parseInt(config.getProperty("MaxLength"))) {
+							assertTrue(true);
+							
+						}
+						else {
+							assertFalse(false);
+						}
 						
+						SurveyPreviewPage.submitButton(driver).click();
+						Thread.sleep(2000);
+						break;
+					}
+						
+				 SurveyBuilderPage.builderTab(driver).click();
+					SurveyBuilderPage.editQuestion(driver).click();
+					SurveyBuilderPage.advanceTab(driver).click();
+					
+						
+						
+						 
+			}	
+			for(WebElement placeholder : SurveyBuilderPage.defaultValueQuestion(driver)) {
+				Thread.sleep(1000);
+				
+				
+				 if(!placeholder.isSelected()) {
+					 placeholder.click(); 
+						Assert.assertTrue(SurveyBuilderPage.placeholderTextField(driver).isDisplayed());
+						SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
+						Thread.sleep(1000);
+						Assert.assertTrue(SurveyBuilderPage.placeholderTextFieldErrorMessage(driver).getText().contains("Please Enter Placeholder"));
+						SurveyBuilderPage.placeholderTextField(driver).sendKeys(config.getProperty("placeholder"));
+						SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();	
+						for(WebElement defaultvalue : SurveyBuilderPage.defaultValueQuestion(driver)) {
+							 if(!defaultvalue.isSelected()) {
+								 defaultvalue.click();
+								 break;
+							 }
+							
+						}
+						
+						Assert.assertTrue(SurveyBuilderPage.shortAnswerInputBox(driver).getAttribute("placeholder").equals(config.getProperty("placeholder")));
+						SurveyListingPage.SaveAllButtonForBuilder(driver).click();
+						Thread.sleep(1000);
+						SurveyPreviewPage.previewTab(driver).click();
+						Thread.sleep(1000);
+						SurveyPreviewPage.startSurveyButton(driver).click();
+						Thread.sleep(1000);
+						Assert.assertTrue(SurveyPreviewPage.shortAnswerInputBox(driver).getAttribute("placeholder").equalsIgnoreCase(config.getProperty("placeholder")));
+						Thread.sleep(1000);
 						SurveyPreviewPage.submitButton(driver).click();
 						Thread.sleep(2000);
 						break;
@@ -134,6 +189,10 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase{
 						
 						
 			}	
+			
+			SurveyBuilderPage.builderTab(driver).click();
+			SurveyBuilderPage.editQuestion(driver).click();
+			SurveyBuilderPage.advanceTab(driver).click();
 		}
 
 	}

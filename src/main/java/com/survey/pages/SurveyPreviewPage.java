@@ -46,10 +46,19 @@ public class SurveyPreviewPage {
 	}
    
    public static WebElement shortAnswerInputBox(WebDriver driver) {
-		element = driver.findElement(By.xpath("//div[contains(@class,'slds-p-bottom_xx-large')]//input[@class='slds-input']"));
+		element = driver.findElement(By.xpath("//div[@id='questionsInPreviewForIframe']//div[1]//div[1]//div[2]//div[2]//div[1]//div[1]//input[1]"));
 		return element;
 	}
+   public static WebElement checkPlaceholderErrorMessage(WebDriver driver) {
+		
+       element = driver.findElement(By.xpath("//*[@id=\"questionsWrapper\"]/div/div/div[2]/div[2]/div[2]"));
+       return element;      
+	}
    
+   public static WebElement placeholderInputBox(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[@id='questionsInPreviewForIframe']//div[1]//div[1]//div[2]//div[2]//div[1]//div[1]//input[1]"));
+		return element;
+	}
  
  
  

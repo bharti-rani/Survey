@@ -186,5 +186,12 @@ public class SurveyBuilderPage {
 		element = driver.findElement(By.id("maxLength"));
 		return element;
 	}
-	
+	public static WebElement placeholderTextFieldErrorMessage(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(text(),'Please Enter Placeholder')]"));
+		return element;
+	}
+	public static WebElement placeholderTextField(WebDriver driver) {
+		element = driver.findElement(By.id("placeholders"));
+		return element;
+	}
 }
