@@ -133,7 +133,7 @@ public class AddSurveyQuestion extends survey.base.TestBase {
 				el.click();
 				Thread.sleep(2000);
 				SurveyBuilderPage.enterQuestion(driver).sendKeys(config.getProperty("ParagraphType"));
-
+ 
 				Thread.sleep(2000);
 				Assert.assertTrue(SurveyBuilderPage.checkParagraphLebel(driver).getText().contains("Paragraph"));
 				Thread.sleep(2000);
@@ -183,6 +183,7 @@ public class AddSurveyQuestion extends survey.base.TestBase {
 				Assert.assertFalse(SurveyBuilderPage.checkdatePickerIsDisabled(driver).isEnabled());
 				Assert.assertTrue(SurveyBuilderPage.advanceTab(driver).isDisplayed());
 				Assert.assertTrue(SurveyBuilderPage.helpTab(driver).isDisplayed());
+				SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
 				break;
 
 			}
@@ -196,9 +197,9 @@ public class AddSurveyQuestion extends survey.base.TestBase {
 			SurveyBuilderPage.questionTypeButton(driver).click();
 		}
 		Thread.sleep(1000);
-		SurveyListingPage.SaveAllButtonForBuilder(driver).click();
+		SurveyListingPage.saveAllButtonForBuilder(driver).click();
 		Thread.sleep(3000);
-		Assert.assertTrue(SurveyListingPage.SaveAllSuccessMessage(driver).getText()
+		Assert.assertTrue(SurveyListingPage.saveAllSuccessMessage(driver).getText()
 				.contains("Survey Configuration has been saved successfully."));
 
 	}

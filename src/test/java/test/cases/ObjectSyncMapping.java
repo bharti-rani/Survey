@@ -14,7 +14,7 @@ public class ObjectSyncMapping extends survey.base.TestBase {
 		AddSurveyQuestion addquestion = new AddSurveyQuestion();
 		addquestion.addQuestion();
 		Thread.sleep(5000);
-		SurveySyncMapping.surveyTabMapping(driver).click();
+	 	SurveySyncMapping.surveyTabMapping(driver).click();
 		Thread.sleep(2000);
 		SurveySyncMapping.objectSelectField(driver).sendKeys(config.getProperty("Account"));
 		SurveySyncMapping.proceedToMapping(driver).click();

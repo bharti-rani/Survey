@@ -17,35 +17,35 @@ public class CreateNewSurvey extends survey.base.TestBase {
 		homepage.SurveyTab(driver).click();
 		Thread.sleep(2000);
 		SurveyListingPage surveylisting = new SurveyListingPage();
-		surveylisting.CreateNewsurveybutton(driver).click();
-		surveylisting.SurveyName(driver).sendKeys("");
-		surveylisting.SurveyDescription(driver);
-		surveylisting.CreateSurveybutton(driver).click();
-		String GetCreateError1 = surveylisting.CreateSurveyError(driver).getText();
+		surveylisting.createNewsurveybutton(driver).click();
+		surveylisting.surveyName(driver).sendKeys("");
+		surveylisting.surveyDescription(driver);
+		surveylisting.createSurveybutton(driver).click();
+		String GetCreateError1 = surveylisting.createSurveyError(driver).getText();
 		Assert.assertTrue(GetCreateError1.contains("Please Enter Survey Name."));
-		surveylisting.SurveyName(driver).sendKeys(config.getProperty("surveyname"));
-		surveylisting.CreateSurveybutton(driver).click();
+		surveylisting.surveyName(driver).sendKeys(config.getProperty("surveyname"));
+		surveylisting.createSurveybutton(driver).click();
 		Thread.sleep(3000);
-		String CheckSurveyTitle = surveylisting.CheckSurveyName(driver).getText();
+		String CheckSurveyTitle = surveylisting.checkSurveyName(driver).getText();
 		System.out.println(CheckSurveyTitle);
-
+ 
 		Thread.sleep(4000);
 		Assert.assertTrue(CheckSurveyTitle.contains(config.getProperty("surveyname")));
-		surveylisting.BuilderTab(driver).isSelected();
+		surveylisting.builderTab(driver).isSelected();
 		Thread.sleep(1000);
-		surveylisting.EditSurveyName(driver).click();
+		surveylisting.editSurveyName(driver).click();
 		Thread.sleep(1000);
-		surveylisting.SurveyNameEdit(driver).clear();
-		surveylisting.SurveyNameEdit(driver).sendKeys(" ");
-		surveylisting.SurveyDescriptionEdit(driver).clear();
-		surveylisting.UpdateSurveyBuuton(driver).click();
-		String GetEditSurveyNameError = surveylisting.EditSurveyError(driver).getText();
+		surveylisting.surveyNameEdit(driver).clear();
+		surveylisting.surveyNameEdit(driver).sendKeys(" ");
+		surveylisting.surveyDescriptionEdit(driver).clear();
+		surveylisting.updateSurveyBuuton(driver).click();
+		String GetEditSurveyNameError = surveylisting.editSurveyError(driver).getText();
 		Assert.assertTrue(GetEditSurveyNameError.contains("Please Enter Survey Name."));
 		Thread.sleep(1000);
-		surveylisting.SurveyNameEdit(driver).sendKeys(config.getProperty("updatedSurveyName"));
-		surveylisting.UpdateSurveyBuuton(driver).click();
+		surveylisting.surveyNameEdit(driver).sendKeys(config.getProperty("updatedSurveyName"));
+		surveylisting.updateSurveyBuuton(driver).click();
 		Thread.sleep(1000);
-		String CheckSurveyTitle1 = surveylisting.CheckSurveyName(driver).getText();
+		String CheckSurveyTitle1 = surveylisting.checkSurveyName(driver).getText();
 		Assert.assertTrue(CheckSurveyTitle1.contains(config.getProperty("updatedSurveyName")));
 
 	}

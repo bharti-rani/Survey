@@ -13,7 +13,7 @@ public class SurveySyncMapping {
 	}
 	public static WebElement proceedToMapping(WebDriver driver) {
 		element = driver.findElement(By.xpath("//*[@id=\"objectSelectTemplate\"]/div/div[2]/button[2]"));
-		return element;
+ 		return element;
 	}
 	public static WebElement showValidationOnObject(WebDriver driver) {
 		element = driver.findElement(By.id("showerror"));

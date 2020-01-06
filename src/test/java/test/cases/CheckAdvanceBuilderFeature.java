@@ -17,7 +17,7 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase {
 		SurveyBuilderPage.questionTypeButton(driver).click();
 		Thread.sleep(1000);
 		for (WebElement el : SurveyBuilderPage.chooseQuestionType(driver)) {
-
+ 
 			Thread.sleep(1000);
 			if (el.getText().equalsIgnoreCase("Short Answer")) {
 				el.click();
@@ -49,7 +49,7 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase {
 								.sendKeys(config.getProperty("RequiredMessage"));
 						SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
 						Assert.assertTrue(SurveyBuilderPage.requiredMessageIcon(driver).isDisplayed());
-						SurveyListingPage.SaveAllButtonForBuilder(driver).click();
+						SurveyListingPage.saveAllButtonForBuilder(driver).click();
 						Thread.sleep(2000);
 						SurveyPreviewPage.previewTab(driver).click();
 						Thread.sleep(1000);
@@ -87,7 +87,7 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase {
 						SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
 						Assert.assertTrue(SurveyBuilderPage.shortAnswerInputBox(driver).getAttribute("value")
 								.equals(config.getProperty("DefaultMessage")));
-						SurveyListingPage.SaveAllButtonForBuilder(driver).click();
+						SurveyListingPage.saveAllButtonForBuilder(driver).click();
 						Thread.sleep(1000);
 						SurveyPreviewPage.previewTab(driver).click();
 						Thread.sleep(1000);
@@ -128,7 +128,7 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase {
 						Thread.sleep(1000);
 						SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
 						Thread.sleep(1000);
-						SurveyListingPage.SaveAllButtonForBuilder(driver).click();
+						SurveyListingPage.saveAllButtonForBuilder(driver).click();
 						Thread.sleep(1000);
 						SurveyPreviewPage.previewTab(driver).click();
 						Thread.sleep(1000);
@@ -180,7 +180,7 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase {
 						SurveyBuilderPage.clickDoneButtonOfQuestion(driver).click();
 						Assert.assertTrue(SurveyBuilderPage.shortAnswerInputBox(driver).getAttribute("placeholder")
 								.equals(config.getProperty("placeholder")));
-						SurveyListingPage.SaveAllButtonForBuilder(driver).click();
+						SurveyListingPage.saveAllButtonForBuilder(driver).click();
 						Thread.sleep(1000);
 						SurveyPreviewPage.previewTab(driver).click();
 						Thread.sleep(1000);
@@ -212,7 +212,7 @@ public class CheckAdvanceBuilderFeature extends survey.base.TestBase {
 						Assert.assertTrue(
 								SurveyBuilderPage.hiddenQuestionText(driver).getText().contains("HIDDEN QUESTION"));
 						Thread.sleep(1000);
-						SurveyListingPage.SaveAllButtonForBuilder(driver).click();
+						SurveyListingPage.saveAllButtonForBuilder(driver).click();
 						Thread.sleep(1000);
 						SurveyPreviewPage.previewTab(driver).click();
 						Thread.sleep(1000);

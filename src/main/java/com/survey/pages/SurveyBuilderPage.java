@@ -43,7 +43,7 @@ public class SurveyBuilderPage {
 
 		return element;
 	}
-
+ 
 	public static JavascriptExecutor scrollDown(WebDriver driver) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");

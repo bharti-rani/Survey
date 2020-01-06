@@ -8,7 +8,7 @@ public class SurveyPreviewPage {
 
 	private static WebElement element = null;
 
-	public static WebElement previewTab(WebDriver driver) {
+ 	public static WebElement previewTab(WebDriver driver) {
 
 		element = driver.findElement(By.xpath("//li[@previewtab='SurveyPreview']"));
 		return element;
