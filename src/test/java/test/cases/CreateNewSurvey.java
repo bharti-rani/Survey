@@ -1,6 +1,5 @@
 package test.cases;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -10,14 +9,11 @@ import org.testng.annotations.Test;
 import com.survey.pages.SalesforceHomePage;
 import com.survey.pages.SurveyListingPage;
 
-
-
 public class CreateNewSurvey extends survey.base.TestBase {
-	
-	
+
 	@Test
 	public void verifycreatenewsurvey() throws InterruptedException {
-		SalesforceHomePage homepage =	PageFactory.initElements(driver, SalesforceHomePage.class); 
+		SalesforceHomePage homepage = PageFactory.initElements(driver, SalesforceHomePage.class);
 		homepage.SurveyTab(driver).click();
 		Thread.sleep(2000);
 		SurveyListingPage surveylisting = new SurveyListingPage();
@@ -33,7 +29,7 @@ public class CreateNewSurvey extends survey.base.TestBase {
 		String CheckSurveyTitle = surveylisting.CheckSurveyName(driver).getText();
 		System.out.println(CheckSurveyTitle);
 
-       Thread.sleep(4000);
+		Thread.sleep(4000);
 		Assert.assertTrue(CheckSurveyTitle.contains(config.getProperty("surveyname")));
 		surveylisting.BuilderTab(driver).isSelected();
 		Thread.sleep(1000);
@@ -51,8 +47,7 @@ public class CreateNewSurvey extends survey.base.TestBase {
 		Thread.sleep(1000);
 		String CheckSurveyTitle1 = surveylisting.CheckSurveyName(driver).getText();
 		Assert.assertTrue(CheckSurveyTitle1.contains(config.getProperty("updatedSurveyName")));
-		
-		
+
 	}
 
 }

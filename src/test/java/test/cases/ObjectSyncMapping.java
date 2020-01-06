@@ -12,6 +12,7 @@ public class ObjectSyncMapping extends survey.base.TestBase {
 	public static void objectMappingValidation() throws InterruptedException {
 	
 		AddSurveyQuestion addquestion = new AddSurveyQuestion();
+		addquestion.addQuestion();
 		Thread.sleep(5000);
 		SurveySyncMapping.surveyTabMapping(driver).click();
 		Thread.sleep(2000);
@@ -32,7 +33,7 @@ public class ObjectSyncMapping extends survey.base.TestBase {
 		SurveySyncMapping.createObject(driver).click();
 		
 	}
-	public static void selectObject() throws InterruptedException{
+	/*public static void selectObject() throws InterruptedException{
 		
-	}
+	}*/
 }
