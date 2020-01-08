@@ -5,7 +5,7 @@
     <classes>
       
       <class name="test.cases.CreateNewSurvey"/>
-      <class name="test.cases.CheckAdvanceBuilderFeature"/>
+      <class name="test.cases.ObjectSyncMapping"/>
    
     </classes>
   </test> <!-- Test -->

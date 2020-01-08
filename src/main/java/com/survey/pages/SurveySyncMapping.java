@@ -25,9 +25,9 @@ public class SurveySyncMapping {
 		element = driver.findElement(By.id("//*[@id=\"globalToast\"]/div/div/div[2]/div"));
 		return element;
 	}
-	// This method is for button "Create New Object".
+	// This method is for button "Create New" to open the modal to create object.
 	public static WebElement createNewObject (WebDriver driver) {
-		element = driver.findElement(By.id("//*[@id=\"objectSelectTemplate\"]/div/div[1]/div[2]/div/button"));
+		element = driver.findElement(By.xpath("//button[contains(text(),'Create New')]"));
 		return element;
 	}
 	public static WebElement objectSelectField(WebDriver driver) {
@@ -36,6 +36,10 @@ public class SurveySyncMapping {
 	}
 	public static WebElement labelForObjectName(WebDriver driver) {
 		element = driver.findElement(By.id("object_label"));
+		return element;
+	}
+	public static WebElement labelForObjectNameValidation(WebDriver driver) {
+		element = driver.findElement(By.id("label_error"));
 		return element;
 	}
 	public static WebElement apiNameForObjectLabel (WebDriver driver) {
@@ -48,7 +52,7 @@ public class SurveySyncMapping {
 	}
 	//To create Object after filling all the details of object.
 	public static WebElement createObject(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id=\"modalCreateNewObj\"]/section/div/footer/button[2]"));
+		element = driver.findElement(By.xpath("//button[contains(text(),'Create Object')]"));
 		return element;
 	}
 	public static WebElement cancelObjectCreation(WebDriver driver) {
@@ -65,6 +69,9 @@ public class SurveySyncMapping {
 	}
 	public static WebElement autoCreatedText(WebDriver driver) {
 		element = driver.findElement(By.xpath("//span[@class='slds-badge sf-badge-auto-create']"));
+		return element;
+	}public static WebElement autoSuggestedText(WebDriver driver) {
+		element = driver.findElement(By.xpath("//span[@class='slds-badge sf-badge-auto-suggest']"));
 		return element;
 	}
 	public static WebElement editMapField(WebDriver driver) {
@@ -103,5 +110,20 @@ public class SurveySyncMapping {
 		element = driver.findElement(By.xpath("//div[contains(@class,'slds-p-around--small slds-has-divider--bottom')]//button[1]"));
 		return element;
 	}
-	
+	public static WebElement radioButtonObjectMapping(WebDriver driver) {
+		element = driver.findElement(By.xpath("//span[text()='Account']//parent::label[@class='slds-radio__label slds-grid']//span[@class='slds-radio_faux slds-no-flex']"));
+		return element;
+	}
+	public static WebElement successSaveMapping(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(@class,'sf-text-size-16')]"));
+		return element;
+	}
+	public static WebElement editSurveyMapping(WebDriver driver) {
+		element = driver.findElement(By.xpath("//div[contains(@class,'slds-p-horizontal--small sf-text-right')]//button[contains(@class,'slds-button slds-button_icon slds-button_icon-border-filled')]"));
+		return element;
+	}
+	public static WebElement crossOnMapField(WebDriver driver) {
+		element = driver.findElement(By.xpath("//body[contains(@class,'ext-webkit ext-chrome')]//tr//tr[1]//td[3]//div[1]//div[1]//div[1]//div[1]//div[2]//button[2]//i[1]"));
+		return element;
+	}
 }
