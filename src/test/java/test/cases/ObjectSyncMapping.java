@@ -7,15 +7,26 @@ import org.testng.annotations.Test;
 import com.survey.pages.SurveySyncMapping;
 
 public class ObjectSyncMapping extends survey.base.TestBase {
+	private static int i;
 	
 	@Test
 	public static void objectMappingValidation() throws InterruptedException {
 	
 		AddSurveyQuestion addquestion = new AddSurveyQuestion();
+		addquestion.addQuestion();
 		Thread.sleep(5000);
-		SurveySyncMapping.surveyTabMapping(driver).click();
+	 	SurveySyncMapping.surveyTabMapping(driver).click();
 		Thread.sleep(2000);
 		SurveySyncMapping.objectSelectField(driver).sendKeys(config.getProperty("Account"));
+		SurveySyncMapping getivalue = new SurveySyncMapping(i);
+		for(i=1; i<=5; i++) {
+			String objectName = getivalue.beforePath(driver, i).getText();
+			if(objectName.contains(config.getProperty("Account"))) {
+				getivalue.afterPath(driver, i).click();
+				break;
+			}
+			
+		}
 		SurveySyncMapping.proceedToMapping(driver).click();
 		if(SurveySyncMapping.noQuestionValidation(driver).getText().equalsIgnoreCase("No question found in survey")) {
 			AddSurveyQuestion.addQuestion();
@@ -32,7 +43,7 @@ public class ObjectSyncMapping extends survey.base.TestBase {
 		SurveySyncMapping.createObject(driver).click();
 		
 	}
-	public static void selectObject() throws InterruptedException{
+	/*public static void selectObject() throws InterruptedException{
 		
-	}
+	}*/
 }

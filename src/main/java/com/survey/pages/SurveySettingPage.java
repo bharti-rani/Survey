@@ -10,7 +10,7 @@ public class SurveySettingPage {
 	public static WebElement SurveySettingTab(WebDriver driver) {
 		// TODO Auto-generated method stub
           element = driver.findElement(By.xpath("//span[@id='j_id0:j_id6:j_id27']//li[2]"));
-          return element;      
+           return element;      
 	}
 	
 	public static WebElement GenrealTab(WebDriver driver) {
@@ -63,6 +63,11 @@ public class SurveySettingPage {
 	public static WebElement WelcomeNotesTextField(WebDriver driver) {
 		// TODO Auto-generated method stub
           element = driver.findElement(By.xpath("//div[@class='slds-rich-text-editor slds-grid slds-grid_vertical slds-nowrap slds-has-focus']//div[@class='ql-editor ql-blank slds-rich-text-area__content slds-text-color_weak slds-grow']"));
+          return element;      
+	}
+	public static WebElement publishToggleButton(WebDriver driver) {
+		// TODO Auto-generated method stub
+          element = driver.findElement(By.xpath("//span[@id='publishShow']//span[@class='slds-checkbox_faux']"));
           return element;      
 	}
 	

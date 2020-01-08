@@ -16,17 +16,11 @@ import org.testng.annotations.BeforeSuite;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
-	
+
 	/*
-	 * webdriver
-	 * properties
-	 * mail
-	 * logs
-	 * extent reports
-	 * db
-	 * excel
-	*/
-	
+	 * webdriver properties mail logs extent reports db excel
+	 */
+
 	public static WebDriver driver;
 	public static Properties config = new Properties();
 	public static Properties OR = new Properties();
@@ -34,10 +28,11 @@ public class TestBase {
 
 	@BeforeSuite
 	public void setUp() {
-		if(driver == null) {
-			
+		if (driver == null) {
+
 			try {
-				fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\properties\\Config.properties");
+				fis = new FileInputStream(
+						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -48,9 +43,10 @@ public class TestBase {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			try {
-				fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
+				fis = new FileInputStream(
+						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -61,31 +57,29 @@ public class TestBase {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			if(config.getProperty("browser").equalsIgnoreCase("firefox")) {
+
+			if (config.getProperty("browser").equalsIgnoreCase("firefox")) {
 				WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
-			}
-			else if(config.getProperty("browser").equalsIgnoreCase("chrome")){
+			} else if (config.getProperty("browser").equalsIgnoreCase("chrome")) {
 				WebDriverManager.chromedriver().setup();
-				driver = new ChromeDriver();	
+				driver = new ChromeDriver();
 			}
 			driver.get(config.getProperty("testsiteurl"));
 			driver.manage().window().maximize();
 			driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.MINUTES);
 			driver.manage().timeouts().implicitlyWait(3, TimeUnit.MINUTES);
 			driver.findElement(By.id(OR.getProperty("username"))).sendKeys(config.getProperty("username"));
-		    driver.findElement(By.id(OR.getProperty("password"))).sendKeys(config.getProperty("pass"));
-		    driver.findElement(By.id(OR.getProperty("btn-login"))).click();
-		
+			driver.findElement(By.id(OR.getProperty("password"))).sendKeys(config.getProperty("pass"));
+			driver.findElement(By.id(OR.getProperty("btn-login"))).click();
+
 		}
 	}
-	
-	
+
 	@AfterSuite
 	public void tearDown() {
-		
-		if(driver!=null) {
+
+		if (driver != null) {
 			driver.quit();
 		}
 	}

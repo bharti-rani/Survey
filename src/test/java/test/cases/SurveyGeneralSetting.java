@@ -18,7 +18,7 @@ public class SurveyGeneralSetting extends survey.base.TestBase{
 		SalesforceHomePage homepage = new SalesforceHomePage(); 
 		homepage.SurveyTab(driver).click();
 		
-		CreateNewSurvey survey = new CreateNewSurvey();
+	 	CreateNewSurvey survey = new CreateNewSurvey();
 		survey.verifycreatenewsurvey();
 		SurveySettingPage.SurveySettingTab(driver).click();
 		Thread.sleep(1000);
