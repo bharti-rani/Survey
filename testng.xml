@@ -5,8 +5,9 @@
 		<classes>
 
 			<class name="test.cases.CreateNewSurvey" />
-			<class name="test.cases.AddSurveyQuestion" />
-			<class name="test.cases.SurveyDistribution" />
+			
+			<class name="test.cases.ObjectSyncMapping" />
+			
 
 		</classes>
 	</test> <!-- Test -->

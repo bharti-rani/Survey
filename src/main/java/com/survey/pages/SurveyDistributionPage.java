@@ -60,16 +60,12 @@ public class SurveyDistributionPage {
 				By.id("distributionObj"));
 		return element;
 	}
-	public static List<WebElement> selectObject(WebDriver driver) {
-		List<WebElement> element = driver.findElements(
-				By.xpath("//label[@class = 'slds-radio__label slds-grid' ]//span[@class ='slds-radio_faux slds-no-flex']"));
+	public static WebElement selectObject(WebDriver driver) {
+		 element = driver.findElement(
+				By.xpath("//span[text()='Account']//parent::label[@class='slds-radio__label slds-grid']//span[@class='slds-radio_faux slds-no-flex']"));
 		return element;
 	}
-	public static List<WebElement> verifyObjectText(WebDriver driver) {
-		List<WebElement> element = driver.findElements(
-				By.xpath("//label[@class = 'slds-radio__label slds-grid' ]//span[@class ='slds-form-element__label userName']"));
-		return element;
-	}
+	
 	
 	
 	public static WebElement nextButton(WebDriver driver) {
@@ -87,9 +83,14 @@ public class SurveyDistributionPage {
 				By.id("generatedSurveyLink"));
 		return element;
 	}
-	public static WebElement createTriggerButton(WebDriver driver) {
+	public static WebElement createTriggerButtonOfGenerateLink(WebDriver driver) {
 		element = driver.findElement(
-				By.xpath("//button[contains(text(),'Create Trigger')]"));
+				By.xpath("//div[@class='slds-p-around_small slds-has-divider--top']//button[@class='slds-button slds-button_brand'][contains(text(),'Create Trigger')]"));
+		return element;
+	}
+	public static WebElement createTriggerButtonOfCreateTrigger(WebDriver driver) {
+		element = driver.findElement(
+				By.xpath("//div[@class='slds-p-around_small']//button[@class='slds-button slds-button_brand'][contains(text(),'Create Trigger')]"));
 		return element;
 	}
 	public static WebElement saveButton(WebDriver driver) {
@@ -130,7 +131,7 @@ public class SurveyDistributionPage {
 	}
 	public static WebElement selectTrigger(WebDriver driver) {
 		element = driver.findElement(
-				By.xpath("//label[@class='slds-radio__label' and @for='ckb_after_insert']//span[@class='slds-radio_faux']"));
+				By.xpath("//span[text()='After Insert']//parent::label[@class='slds-radio__label']//span[@class='slds-radio_faux']"));
 		return element;
 	}
 	
@@ -144,6 +145,9 @@ public class SurveyDistributionPage {
 		return element;
 	}
 	
-	
+	public static WebElement triggerSuccessMessage(WebDriver driver) {
+		 element = driver.findElement(By.xpath("//div[@class='sf-text-size-16']"));
+		return element;
+	}
 	
 }

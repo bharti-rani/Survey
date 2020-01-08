@@ -6,6 +6,10 @@ import org.openqa.selenium.WebElement;
 
 public class SurveySyncMapping {
 	private static WebElement element = null; 
+	private static int i;
+	public SurveySyncMapping(int i) {
+		this.i = i;
+	}
 	
 	public static WebElement surveyTabMapping(WebDriver driver) {
 		element = driver.findElement(By.id("SurveyObjectMappingId"));
@@ -57,4 +61,16 @@ public class SurveySyncMapping {
 		element = driver.findElement(By.xpath("//*[@id=\"modalCreateNewObj\"]/section/div/header/button"));
 		return element;
 	}
+	public static WebElement beforePath(WebDriver driver, int i) {
+		String bfPath = "//li[";
+		String afPath = "]//span[1]//label[1]//span[2]";
+		
+		element = driver.findElement(By.xpath(bfPath+i+afPath));
+		return element;
+	}
+	public static WebElement afterPath(WebDriver driver, int i) {
+		element = driver.findElement(By.xpath("//li["+i+"]//span[1]//label[1]//span[1]"));
+		return element;
+	}
+	
 }
