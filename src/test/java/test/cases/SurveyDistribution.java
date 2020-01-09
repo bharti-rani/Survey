@@ -2,6 +2,13 @@ package test.cases;
 
 import static org.testng.Assert.assertTrue;
 
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -34,11 +41,9 @@ public class SurveyDistribution extends survey.base.TestBase {
 					.equals("true"));
 			Thread.sleep(1000);
 			SurveyDistributionPage.nextButton(driver).click();
-			Thread.sleep(1000);
-			Assert.assertTrue(
-					SurveyDistributionPage.verifyObjectError(driver).getText().contains("please select object"));
-			SurveyDistributionPage.selectObjectForDistribution(driver)
-					.sendKeys(config.getProperty("SelectObjectForDistribution"));
+			Thread.sleep(3000);
+			Assert.assertTrue(SurveyDistributionPage.verifyObjectError(driver).getText().equalsIgnoreCase("Please Select Object"));
+			SurveyDistributionPage.selectObjectForDistribution(driver).sendKeys(config.getProperty("SelectObjectForDistribution"));
 			Thread.sleep(1000);
 			SurveyDistributionPage.selectObject(driver).click();
 
@@ -47,13 +52,13 @@ public class SurveyDistribution extends survey.base.TestBase {
 			Thread.sleep(3000);
 			Assert.assertTrue(SurveyDistributionPage.generateLink(driver).isDisplayed());
 			SurveyDistributionPage.saveButton(driver).click();
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 			Assert.assertTrue(SurveyDistributionPage.verifySaveSuccessMessage(driver).getText()
 					.contains("Record Saved Successfully"));
 			SurveyDistributionPage.createTriggerButtonOfGenerateLink(driver).click();
 			Thread.sleep(3000);
 			SurveyDistributionPage.createTriggerButtonOfCreateTrigger(driver).click();
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 			Assert.assertTrue(SurveyDistributionPage.emailFieldError(driver).getText().contains("Select Field"));
 			SurveyDistributionPage.emailField(driver).sendKeys(config.getProperty("EmailField") + Keys.ENTER);
 			SurveyDistributionPage.createTriggerButtonOfCreateTrigger(driver).click();
@@ -76,7 +81,18 @@ public class SurveyDistribution extends survey.base.TestBase {
 			SurveyDistributionPage.emailTemplate(driver).selectByVisibleText(config.getProperty("EmailTemplate"));
 			SurveyDistributionPage.createTriggerButtonOfCreateTrigger(driver).click();
 			Thread.sleep(2000);
-			Assert.assertTrue(SurveyDistributionPage.triggerSuccessMessage(driver).getText().contains("Trigger Created Successfully"));
+			if(SurveyDistributionPage.triggerSuccessMessage(driver).getText().contains("Trigger Created Successfully")) {
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-dd-MM HH:mm:ss");
+				 Date date = new Date();
+				 String date1= dateFormat.format(date);
+				 System.out.println("Current date and time is " +date1);
+			}
+			else if(SurveyDistributionPage.triggerSuccessMessage(driver).getText().contains("duplicate value found: <unknown> duplicates value on record with id: <unknown>")) {
+				
+				SurveyDistributionPage.createTriggerName(driver).clear();
+			}
+			
+			
 
 		} else {
 			System.out.println("distribution tab is not showing");
@@ -85,7 +101,16 @@ public class SurveyDistribution extends survey.base.TestBase {
 	}
 	@Test
 	public void checkTriggerIsCreatedOrNot() {
+		int row_count = SurveyDistributionPage.noOfrow(driver).size();
 		
+		for(int row=0; row<=row_count; row++) {
+			List<WebElement> column_row = SurveyDistributionPage.noOfrow(driver).get(row).findElements(By.xpath("/td/div"));
+			int column_count = column_row.size();
+			for(int col=0; col<=column_count; col++) {
+				String CelText = column_row.get(col).getText();
+				System.out.println("rowline"+row+"colline"+col+"value"+CelText);
+			}
+		}
 	}
 
 }
