@@ -70,7 +70,10 @@ public class SurveyDistribution extends survey.base.TestBase {
 			Thread.sleep(1000);
 			Assert.assertTrue(SurveyDistributionPage.triggerName_Error(driver).getText()
 					.contains("Trigger name should not contain reserved keyword."));
-			SurveyDistributionPage.createTriggerName(driver).sendKeys(config.getProperty("TriggerName"));
+			SurveyDistributionPage.createTriggerName(driver).clear();
+			WebElement TriggerName =SurveyDistributionPage.createTriggerName(driver);
+			TriggerName.sendKeys(config.getProperty("TriggerName"));
+			
 			SurveyDistributionPage.createTriggerButtonOfCreateTrigger(driver).click();
 			Thread.sleep(2000);
 			Assert.assertTrue(SurveyDistributionPage.selectTriggerError(driver).getText().contains("Select Event"));
@@ -82,14 +85,25 @@ public class SurveyDistribution extends survey.base.TestBase {
 			SurveyDistributionPage.createTriggerButtonOfCreateTrigger(driver).click();
 			Thread.sleep(2000);
 			if(SurveyDistributionPage.triggerSuccessMessage(driver).getText().contains("Trigger Created Successfully")) {
-				DateFormat dateFormat = new SimpleDateFormat("yyyy-dd-MM HH:mm:ss");
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				 Date date = new Date();
 				 String date1= dateFormat.format(date);
 				 System.out.println("Current date and time is " +date1);
 			}
 			else if(SurveyDistributionPage.triggerSuccessMessage(driver).getText().contains("duplicate value found: <unknown> duplicates value on record with id: <unknown>")) {
 				
-				SurveyDistributionPage.createTriggerName(driver).clear();
+				for(int i=1; i<=100; i++) {
+				SurveyDistributionPage.createTriggerName(driver).sendKeys(Integer.toString(i));
+				SurveyDistributionPage.createTriggerButtonOfCreateTrigger(driver).click();
+					if(SurveyDistributionPage.triggerSuccessMessage(driver).getText().contains("Trigger Created Successfully")) {
+						DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						 Date date = new Date();
+						 String date2= dateFormat.format(date);
+						 System.out.println("Current date and time is " +date2);
+						 break;
+					}
+				}
+				
 			}
 			
 			
@@ -101,16 +115,19 @@ public class SurveyDistribution extends survey.base.TestBase {
 	}
 	@Test
 	public void checkTriggerIsCreatedOrNot() {
-		int row_count = SurveyDistributionPage.noOfrow(driver).size();
-		
-		for(int row=0; row<=row_count; row++) {
-			List<WebElement> column_row = SurveyDistributionPage.noOfrow(driver).get(row).findElements(By.xpath("/td/div"));
-			int column_count = column_row.size();
-			for(int col=0; col<=column_count; col++) {
-				String CelText = column_row.get(col).getText();
-				System.out.println("rowline"+row+"colline"+col+"value"+CelText);
+		for(WebElement row: SurveyDistributionPage.noOfrow(driver)) {
+			System.out.println(row.getAttribute("class"));
+			List<WebElement> Allcol = row.findElements(By.xpath("/td"));
+			for(WebElement col : Allcol) {
+				WebElement coldetail = col.findElement(By.xpath("/div"));
+				
+				System.out.println("content >>   " + coldetail.getText());
 			}
+		}
+		
+		
+			
 		}
 	}
 
-}
+

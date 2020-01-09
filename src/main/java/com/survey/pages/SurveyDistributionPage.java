@@ -133,10 +133,14 @@ public class SurveyDistributionPage {
 	
 	//Check trigger record is create or not,..
 	
-	
+	  
 
 	public static List<WebElement> noOfrow(WebDriver driver) {
 		List<WebElement> element = driver.findElements(By.xpath("//*[@id=\"showDistributionData\"]/tr"));
+		return element;
+	}
+	public static List<WebElement> noOfcol(WebDriver driver) {
+		List<WebElement> element = driver.findElements(By.xpath("/td"));
 		return element;
 	}
 	
