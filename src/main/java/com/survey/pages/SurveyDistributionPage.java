@@ -1,11 +1,10 @@
 package com.survey.pages;
 
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.util.List;
-import java.util.Properties;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,24 +14,6 @@ import org.openqa.selenium.support.ui.Select;
 public class SurveyDistributionPage {
 	
 	private static WebElement element = null;
-	public static Properties config = new Properties();
-	public static FileInputStream fls;
-	public static FileInputStream readfile() {
-		 try {
-			fls =new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			config.load(fls);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return fls;
-		
-	}
 	
 
 	public static WebElement distributionTab(WebDriver driver) {
@@ -149,5 +130,15 @@ public class SurveyDistributionPage {
 		 element = driver.findElement(By.xpath("//div[@class='sf-text-size-16']"));
 		return element;
 	}
+	
+	//Check trigger record is create or not,..
+	
+	
+
+	public static List<WebElement> noOfrow(WebDriver driver) {
+		List<WebElement> element = driver.findElements(By.xpath("//*[@id=\"showDistributionData\"]/tr"));
+		return element;
+	}
+	
 	
 }
