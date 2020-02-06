@@ -4,12 +4,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -17,15 +16,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
 
-	/*
-	 * webdriver properties mail logs extent reports db excel
-	 */
+
 
 	public static WebDriver driver;
 	public static Properties config = new Properties();
 	public static Properties OR = new Properties();
 	public static FileInputStream fis;
-
+	public static WebDriverWait wait;
+	
 	@BeforeSuite
 	public void setUp() {
 		if (driver == null) {
@@ -34,13 +32,13 @@ public class TestBase {
 				fis = new FileInputStream(
 						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			try {
 				config.load(fis);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 
@@ -48,13 +46,13 @@ public class TestBase {
 				fis = new FileInputStream(
 						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			try {
 				OR.load(fis);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 
@@ -67,8 +65,7 @@ public class TestBase {
 			}
 			driver.get(config.getProperty("testsiteurl"));
 			driver.manage().window().maximize();
-			driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.MINUTES);
-			driver.manage().timeouts().implicitlyWait(3, TimeUnit.MINUTES);
+		    wait = new WebDriverWait(driver, 20);
 			driver.findElement(By.id(OR.getProperty("username"))).sendKeys(config.getProperty("username"));
 			driver.findElement(By.id(OR.getProperty("password"))).sendKeys(config.getProperty("pass"));
 			driver.findElement(By.id(OR.getProperty("btn-login"))).click();

@@ -12,27 +12,27 @@ import org.openqa.selenium.support.ui.Select;
 public class SurveyBuilderPage {
 
 	private static WebElement element = null;
-
+	private static By by = null;
+	
+	
 	public static WebElement builderTab(WebDriver driver) {
 		element = driver.findElement(By.xpath("//li[contains(@class,'slds-col--bump-right')]"));
 		return element;
 	}
 
-	public static WebElement enterQuestion(WebDriver driver) {
-		element = driver.findElement(By.id("questionName"));
-		return element;
+	public static By enterQuestion(WebDriver driver) {
+		by = By.id("questionName");
+		return by;
 	}
 
-	public static WebElement questionTypeButton(WebDriver driver) {
-		element = driver.findElement(
-				By.xpath("//span[@class='slds-p-left_xx-small sf-view-inline sf-min-w-150 sf-text-left']"));
-		return element;
+	public static By questionTypeButton(WebDriver driver) {
+		by = By.xpath("//span[@class='slds-p-left_xx-small sf-view-inline sf-min-w-150 sf-text-left']");
+		return by;
 	}
 
 	public static List<WebElement> chooseQuestionType(WebDriver driver) {
 		List<WebElement> element = new ArrayList<WebElement>();
-		element.add(driver.findElement(
-				By.xpath("//div[@class='slds-has-flexi-truncate']//span[contains(text(),'Multiple Choice')]")));
+		element.add(driver.findElement(By.xpath("//div[@class='slds-has-flexi-truncate']//span[contains(text(),'Multiple Choice')]")));
 		element.add(driver.findElement(By.xpath("//span[contains(text(),'Checkboxes')]")));
 		element.add(driver.findElement(By.xpath("//span[contains(text(),'Dropdown')]")));
 		element.add(driver.findElement(By.xpath("//span[contains(text(),'Short Answer')]")));
@@ -56,46 +56,46 @@ public class SurveyBuilderPage {
 		return element;
 	}
 
-	public static WebElement addNewQuestionsButton(WebDriver driver) {
-		element = driver.findElement(By.id("AddNewQuestionButton"));
-		return element;
+	public static By addNewQuestionsButton(WebDriver driver) {
+		by = By.id("AddNewQuestionButton");
+		return by;
 	}
 
-	public static WebElement clickDoneButtonOfQuestion(WebDriver driver) {
-		element = driver.findElement(By.xpath("//button[contains(text(),'Done')]"));
-		return element;
+	public static By clickDoneButtonOfQuestion(WebDriver driver) {
+		by = By.xpath("//button[contains(text(),'Done')]");
+		return by;
 	}
 
-	public static WebElement getQuestionError(WebDriver driver) {
-		element = driver.findElement(By.xpath("//div[contains(text(),'Please Enter Question.')]"));
-		return element;
+	public static By getQuestionError(WebDriver driver) {
+		by = By.xpath("//div[contains(text(),'Please Enter Question.')]");
+		return by;
 	}
 
-	public static WebElement getAnswerChoiceError(WebDriver driver) {
-		element = driver.findElement(By.xpath("//div[contains(text(),'Please Enter atleast 2 options.')]"));
-		return element;
+	public static By getAnswerChoiceError(WebDriver driver) {
+		by = By.xpath("//div[contains(text(),'Please Enter atleast 2 options.')]");
+		return by;
 	}
 
-	public static WebElement checkShortAnswerLabel(WebDriver driver) {
-		element = driver.findElement(By.xpath("//label[contains(text(),'Short Answer')]"));
-		return element;
+	public static By checkShortAnswerLabel(WebDriver driver) {
+		by = By.xpath("//label[contains(text(),'Short Answer')]");
+		return by;
 	}
 
-	public static WebElement checkShortAnswerChoice(WebDriver driver) {
-		element = driver.findElement(By.xpath(
-				"//div[contains(@class,'slds-p-bottom_medium')]//div[contains(@class,'slds-has-flexi-truncate')]//input[contains(@class,'slds-input')]"));
-		return element;
+	public static By checkShortAnswerChoice(WebDriver driver) {
+		by = By.xpath(
+				"//div[contains(@class,'slds-p-bottom_medium')]//div[contains(@class,'slds-has-flexi-truncate')]//input[contains(@class,'slds-input')]");
+		return by;
 	}
 
-	public static WebElement checkParagraphLebel(WebDriver driver) {
-		element = driver.findElement(By.xpath("//label[contains(text(),'Paragraph')]"));
-		return element;
+	public static By checkParagraphLebel(WebDriver driver) {
+		by = By.xpath("//label[contains(text(),'Paragraph')]");
+		return by;
 	}
 
-	public static WebElement checkParagraphField(WebDriver driver) {
-		element = driver.findElement(
-				By.xpath("//div[contains(@class,'slds-p-bottom_medium')]//textarea[contains(@class,'slds-textarea')]"));
-		return element;
+	public static By checkParagraphField(WebDriver driver) {
+		by = 
+				By.xpath("//div[contains(@class,'slds-p-bottom_medium')]//textarea[contains(@class,'slds-textarea')]");
+		return by;
 	}
 
 	public static Select ratingScale(WebDriver driver) {
@@ -114,14 +114,14 @@ public class SurveyBuilderPage {
 		return element;
 	}
 
-	public static WebElement startSliderlength(WebDriver driver) {
-		element = driver.findElement(By.xpath("//div[@id='optionHtmlWrapper']//span[1]"));
-		return element;
+	public static By startSliderlength(WebDriver driver) {
+		by = By.xpath("//div[@id='optionHtmlWrapper']//span[1]");
+		return by;
 	}
 
-	public static WebElement endSliderlength(WebDriver driver) {
-		element = driver.findElement(By.xpath("//span[contains(@class,'slds-slider__value')][contains(text(),'100')]"));
-		return element;
+	public static By endSliderlength(WebDriver driver) {
+		by = By.xpath("//span[contains(@class,'slds-slider__value')][contains(text(),'100')]");
+		return by;
 	}
 
 	public static WebElement checkdatePickerIsDisabled(WebDriver driver) {
@@ -129,9 +129,9 @@ public class SurveyBuilderPage {
 		return element;
 	}
 
-	public static WebElement advanceTab(WebDriver driver) {
-		element = driver.findElement(By.xpath("//a[contains(text(),'Advanced')]"));
-		return element;
+	public static By advanceTab(WebDriver driver) {
+		by = By.xpath("//a[contains(text(),'Advanced')]");
+		return by;
 	}
 
 	public static WebElement helpTab(WebDriver driver) {
@@ -174,9 +174,9 @@ public class SurveyBuilderPage {
 		return element;
 	}
 
-	public static WebElement requiredMessageTextFieldErrorMessage(WebDriver driver) {
-		element = driver.findElement(By.xpath("//div[contains(text(),'Please Enter Required Error Message')]"));
-		return element;
+	public static By requiredMessageTextFieldErrorMessage(WebDriver driver) {
+		by = By.xpath("//div[contains(text(),'Please Enter Required Error Message')]");
+		return by;
 	}
 
 	public static WebElement requiredMessageIcon(WebDriver driver) {
