@@ -65,19 +65,19 @@ public class TestBase {
 			}
 			driver.get(config.getProperty("testsiteurl"));
 			driver.manage().window().maximize();
-		    wait = new WebDriverWait(driver, 20);
+			wait = new WebDriverWait(driver, 30);
 			driver.findElement(By.id(OR.getProperty("username"))).sendKeys(config.getProperty("username"));
 			driver.findElement(By.id(OR.getProperty("password"))).sendKeys(config.getProperty("pass"));
-			driver.findElement(By.id(OR.getProperty("btn-login"))).click();
+		 	driver.findElement(By.id(OR.getProperty("btn-login"))).click();
 
 		}
 	}
-
+ 
 	@AfterSuite
 	public void tearDown() {
 
-		if (driver != null) {
-			driver.quit();
-		}
+	  	if (driver != null) {
+	 		driver.quit();
+	 	}
 	}
 }

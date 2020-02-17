@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class SurveyBuilderPage {
+ public class SurveyBuilderPage {
 
 	private static WebElement element = null;
 	private static By by = null;

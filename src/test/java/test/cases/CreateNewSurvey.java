@@ -18,11 +18,11 @@ public class CreateNewSurvey extends survey.base.TestBase {
 
 	@Test
 	public void verifycreatenewsurvey() throws InterruptedException {
-		
+		 
 		wait.until(ExpectedConditions.presenceOfElementLocated(SalesforceHomePage.surveyTab(driver))).click();
 		
 		SurveyListingPage surveylisting = new SurveyListingPage();
-		wait.until(ExpectedConditions.presenceOfElementLocated(SurveyListingPage.createNewsurveybutton(driver))).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SurveyListingPage.createNewsurveybutton(driver))).click();
 		surveylisting.surveyName(driver).sendKeys("");
 		surveylisting.surveyDescription(driver);
 		surveylisting.createSurveybutton(driver).click();
@@ -33,7 +33,7 @@ public class CreateNewSurvey extends survey.base.TestBase {
 		
 		 WebElement CheckSurveyTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(surveylisting.checkSurveyName(driver)));
 		 Assert.assertTrue(CheckSurveyTitle.getText().equalsIgnoreCase(config.getProperty("surveyname")));
-		 surveylisting.builderTab(driver).isSelected();
+		Assert.assertTrue(surveylisting.builderTab(driver).getAttribute("class").contains("slds-is-active"));
 		wait.until(ExpectedConditions.presenceOfElementLocated(surveylisting.editSurveyName(driver))).click();
 		surveylisting.surveyNameEdit(driver).clear();
 		surveylisting.surveyNameEdit(driver).sendKeys(" ");
@@ -45,7 +45,7 @@ public class CreateNewSurvey extends survey.base.TestBase {
 		surveylisting.updateSurveyBuuton(driver).click();
 		String CheckSurveyTitle1 = wait.until(ExpectedConditions.visibilityOfElementLocated(surveylisting.checkSurveyName(driver))).getText();
 		Assert.assertTrue(CheckSurveyTitle1.contains(config.getProperty("updatedSurveyName")));
-
+  
 	}
 
 }

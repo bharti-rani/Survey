@@ -8,7 +8,7 @@ public class SurveyListingPage {
 	private static WebElement element = null;
 	private static By by =null;
 	
-	public static By createNewsurveybutton(WebDriver driver) {
+ 	public static By createNewsurveybutton(WebDriver driver) {
 		by = By.xpath("//*[@id=\"bodyTable\"]/tbody/tr/td/div/div[4]/div/div/div[1]/div/div[3]/button");
 		return by;
 	}
@@ -41,11 +41,11 @@ public class SurveyListingPage {
 	}
 
 	public static WebElement builderTab(WebDriver driver) {
-		
-		element = driver.findElement(By.xpath("//*[@id=\"j_id0:j_id6:j_id27\"]/ul/li[1]"));
+	 	
+		element = driver.findElement(By.id("SurveyBuilderId"));
 		return element;
 	}
-
+  
 	public static By saveAllButtonForBuilder(WebDriver driver) {
 		
 		by = By.xpath("//button[contains(@class,'slds-button slds-button_brand slds-m-right_medium')]");

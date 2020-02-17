@@ -22,12 +22,12 @@ public class CheckResponce extends survey.base.TestBase{
     WebElement foundQustionm = wait.until(ExpectedConditions.visibilityOfElementLocated(ResponcePage.getTotalQuestion(driver)));
 	String responceqTotalQuestion = ResponcePage.getTotalQuestionCount(driver).getText();
 	int converttotalquestioncount = Integer.parseInt(responceqTotalQuestion);
-	Assert.assertEquals(converttotalquestioncount, addedQuestionCount-1);
+	Assert.assertEquals(converttotalquestioncount, addedQuestionCount);
 	String getTotalResponceCount = ResponcePage.totalResponcesCount(driver).getText();
 	int convertTotalResponceCount = Integer.parseInt(getTotalResponceCount);
 	int responceTableRecordCount = ResponcePage.getResponceTableRecordCount(driver).size();
 	Assert.assertEquals(responceTableRecordCount, convertTotalResponceCount);
-	
+
 	if(convertTotalResponceCount>0 && responceTableRecordCount>0) {
 		
 		int completedandPartiallyCompleted_ResponceRecords =ResponcePage.getCompletedRecordAndPartialyCompleted(driver).size();

@@ -4,12 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SurveySettingPage {
+ public class SurveySettingPage {
 	private static WebElement element = null;
 	
 	public static WebElement surveySettingTab(WebDriver driver) {
 		
-          element = driver.findElement(By.xpath("//span[@id='j_id0:j_id6:j_id27']//li[2]"));
+          element = driver.findElement(By.xpath("//li[@previewtab='SurveySettings']"));
            return element;      
 	}
 	

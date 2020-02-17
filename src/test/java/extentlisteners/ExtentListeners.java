@@ -1,14 +1,18 @@
 package extentlisteners;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Date;
 
+import org.openqa.selenium.WebDriverException;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.Markup;
@@ -56,7 +60,7 @@ public class ExtentListeners implements ITestListener {
 		testReport.get().fail("<details>" + "<summary>" + "<b>" + "<font color=" + "red>" + "Exception Occured:Click to see"
 				+ "</font>" + "</b >" + "</summary>" +excepionMessage.replaceAll(",", "<br>")+"</details>"+" \n");
 		
-	/*	try {
+		try {
 
 			ExtentManager.captureScreenshot();
 			testReport.get().fail("<b>" + "<font color=" + "red>" + "Screenshot of failure" + "</font>" + "</b>",
@@ -64,7 +68,13 @@ public class ExtentListeners implements ITestListener {
 							.build());
 		} catch (IOException e) {
 
-		}*/
+		} catch (WebDriverException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		String failureLogg="TEST CASE FAILED";
 		Markup m = MarkupHelper.createLabel(failureLogg, ExtentColor.RED);

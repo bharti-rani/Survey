@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class SalesforceHomePage {
 
-	private static By element = null;
+private static By element = null;
 
 	public static By surveyTab(WebDriver driver) {
 		

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class SurveyPreviewPage {
 
 	private static WebElement element = null;
-	
+
 	private static By by = null;
 	
  	public static By previewTab(WebDriver driver) {
