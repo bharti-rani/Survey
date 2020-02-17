@@ -1,5 +1,16 @@
 package extentlisteners;
 
+import java.io.File;
+import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Date;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriverException;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
@@ -25,19 +36,19 @@ public class ExtentManager {
 	        extent.attachReporter(htmlReporter);
 	        extent.setSystemInfo("Automation Tester", "Bharti Rani");
 	        extent.setSystemInfo("Organization", "Athenalogics");
-	        extent.setSystemInfo("Build no", "Survey-1");
+	        extent.setSystemInfo("Build no", "TestSurvey-1");
 	       
 	        
 	        return extent;
 	    }
 
 	    
-	  /*  public static String screenshotPath;
+	    public static String screenshotPath;
 		public static String screenshotName;
 		
-		public static void captureScreenshot() {
+		public static void captureScreenshot() throws WebDriverException, SQLException {
 
-			File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
+			File scrFile = ((TakesScreenshot) DriverManager.getDriver(screenshotPath)).getScreenshotAs(OutputType.FILE);
 
 			Date d = new Date();
 			screenshotName = d.toString().replace(":", "_").replace(" ", "_") + ".jpg";
@@ -50,7 +61,7 @@ public class ExtentManager {
 			}
 
 		
-		}*/
+		}
 	
 
 	}

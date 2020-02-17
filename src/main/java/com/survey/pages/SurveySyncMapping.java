@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SurveySyncMapping {
+ public class SurveySyncMapping {
 	private static WebElement element = null; 
 	private static int i;
+	
+	
 	public SurveySyncMapping(int i) {
 		this.i = i;
 	}
@@ -24,7 +26,7 @@ public class SurveySyncMapping {
 		return element;
 	}
 	public static WebElement noQuestionValidation (WebDriver driver) {
-		element = driver.findElement(By.id("//*[@id=\"globalToast\"]/div/div/div[2]/div"));
+		element = driver.findElement(By.xpath("//*[@id=\"globalToast\"]/div/div/div[2]/div"));
 		return element;
 	}
 	// This method is for button "Create New Object".

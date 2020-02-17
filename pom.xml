@@ -85,7 +85,22 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>3.7.1</version>
 		</dependency>
+		
+     <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+       <dependency>
+          <groupId>javax.mail</groupId>
+          <artifactId>javax.mail-api</artifactId>
+          <version>1.5.5</version>
+      </dependency>
+      
+    <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+   <dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>4.1.2</version>
+ </dependency>
 
 
-	</dependencies>
+</dependencies>
+	
 </project>

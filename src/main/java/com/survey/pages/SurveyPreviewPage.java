@@ -8,10 +8,12 @@ public class SurveyPreviewPage {
 
 	private static WebElement element = null;
 
- 	public static WebElement previewTab(WebDriver driver) {
+	private static By by = null;
+	
+ 	public static By previewTab(WebDriver driver) {
 
-		element = driver.findElement(By.xpath("//li[@previewtab='SurveyPreview']"));
-		return element;
+		by = By.xpath("//li[@previewtab='SurveyPreview']");
+		return by;
 	}
 
 	public static WebElement desktopViewIcon(WebDriver driver) {
@@ -26,10 +28,10 @@ public class SurveyPreviewPage {
 		return element;
 	}
 
-	public static WebElement startSurveyButton(WebDriver driver) {
+	public static By startSurveyButton(WebDriver driver) {
 
-		element = driver.findElement(By.xpath("//button[@data-startsurveybutton='data-startSurveyButton']"));
-		return element;
+		by = By.xpath("//button[@data-startsurveybutton='data-startSurveyButton']");
+		return by;
 	}
 
 	public static WebElement requiredIcon(WebDriver driver) {
@@ -38,10 +40,10 @@ public class SurveyPreviewPage {
 		return element;
 	}
 
-	public static WebElement submitButton(WebDriver driver) {
+	public static By submitButton(WebDriver driver) {
 
-		element = driver.findElement(By.xpath("//div[@id='questionsInPreview']//button[1]"));
-		return element;
+		by = By.xpath("//div[@id='questionsInPreview']//button[1]");
+		return by;
 	}
 
 	public static WebElement checkRequiredErrorMessage(WebDriver driver) {
@@ -50,10 +52,9 @@ public class SurveyPreviewPage {
 		return element;
 	}
 
-	public static WebElement shortAnswerInputBox(WebDriver driver) {
-		element = driver.findElement(By.xpath(
-				"//div[@id='questionsInPreviewForIframe']//div[1]//div[1]//div[2]//div[2]//div[1]//div[1]//input[1]"));
-		return element;
+	public static By shortAnswerInputBox(WebDriver driver) {
+		by = By.xpath("//div[@id='questionsInPreviewForIframe']//div[1]//div[1]//div[2]//div[2]//div[1]//div[1]//input[1]");
+		return by;
 	}
 
 	public static WebElement checkPlaceholderErrorMessage(WebDriver driver) {
